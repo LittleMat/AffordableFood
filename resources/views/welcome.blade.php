@@ -78,8 +78,8 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel TEST 2 R v2
+                <div class="title m-b-md" style="color:blue">
+                    Affordable Food 
                 </div>
 
                 <div class="links">
