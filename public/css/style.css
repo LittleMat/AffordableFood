@@ -5,14 +5,22 @@ body
 
 .navbar
 {
-    position: absolute;
-    top: 95px;
     padding: 0px;
-    height: 15%
+    top: 50px;
+}
+.navbar-nav
+{
+    float: left;
 }
 
-
-.logo
+.logo 
 {
-    z-index: 10;
+    float: left;
+    height: 80px;
+    width: 250px;
+}
+
+.logo img 
+{
+    height: 200px;
 }
