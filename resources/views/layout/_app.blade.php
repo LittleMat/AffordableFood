@@ -13,8 +13,9 @@
     </head>
 
     <body>
-        Test
-
+        @include('inc.navbar')
+        <div class="container">
         @yield('content')
+        </div>
     </body>
 </html>
