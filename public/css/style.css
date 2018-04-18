@@ -1,0 +1,18 @@
+body
+{
+    background-color:cadetblue;
+}
+
+.navbar
+{
+    position: absolute;
+    top: 95px;
+    padding: 0px;
+    height: 15%
+}
+
+
+.logo
+{
+    z-index: 10;
+}
