@@ -5,14 +5,30 @@ body
 
 .navbar
 {
-    position: absolute;
-    top: 95px;
     padding: 0px;
-    height: 15%
+    top: 50px;
+}
+.navbar-nav
+{
+    float: left;
+    margin: 5px;
 }
 
-
-.logo
+.logo 
 {
-    z-index: 10;
+    float: left;
+    height: 80px;
+    width: 198px;
+    margin:0px;
+}
+
+.logo img 
+{
+    height: 198px;
+}
+
+.Filer 
+{
+    height: 40px; 
+    list-style-type: none;
 }
