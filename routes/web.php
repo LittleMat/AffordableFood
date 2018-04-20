@@ -11,12 +11,15 @@
 |
 */
 
+Route::resource('products', 'ProductController');
+
 Route::get('/', function () {
      return view('Layouts.app');
 });
 
 Route::get('/about', function () {
     return view('about');
+});
 
 Auth::routes();
 

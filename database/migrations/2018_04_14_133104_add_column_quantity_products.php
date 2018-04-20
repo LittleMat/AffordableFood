@@ -13,7 +13,10 @@ class AddColumnQuantityProducts extends Migration
      */
     public function up()
     {
-        //
+       Schema::table('supermarket_products', function (Blueprint $table) {
+            $table->integer('quantity')->default(0);
+            $table->string('measure_type')->default('kg');
+        });
     }
 
     /**
@@ -23,6 +26,8 @@ class AddColumnQuantityProducts extends Migration
      */
     public function down()
     {
-        //
+        chema::table('supermarket_products', function (Blueprint $table) {
+            $table->dropColumn(['quantity', 'measure_type']);
+        });
     }
 }

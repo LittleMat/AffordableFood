@@ -13,7 +13,6 @@ class MakeMoreNullableColumnsUsers extends Migration
      */
     public function up()
     {
-
         DB::statement(" ALTER TABLE `users` MODIFY COLUMN `adress` CHAR(60) NOT NULL DEFAULT 'Horsens' ");
         DB::statement(" ALTER TABLE `users` MODIFY COLUMN `language` CHAR(30) NOT NULL DEFAULT 'english' ");
         DB::statement(" ALTER TABLE `users` MODIFY COLUMN `currency` CHAR(30) NOT NULL DEFAULT 'euro' ");
