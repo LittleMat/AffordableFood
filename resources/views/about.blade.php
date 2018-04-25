@@ -55,7 +55,7 @@
                     <div class="card" >
                         <img class="card-img-top img-fluid" src="{{asset('image/male-user.png')}}" alt="Card image">
                         <div class="card-body">
-                            <h4 class="card-title">Mathieu Ponhoreau</h4>
+                            <h4 class="card-title">Mathieu Ponthoreau</h4>
                             <p class="card-text">Some example text.</p>
                             <button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#instr4">More</button>
                             <div id="instr4" class="collapse">

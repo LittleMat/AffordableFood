@@ -1,4 +1,4 @@
-     <div class="col-12 fixed-top" style="height: 120px; background-color:cadetblue"></div>  
+     <div class="col-12 fixed-top" style="height: 120px; background-color:#fdfff6"></div>  
     
      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     
@@ -20,7 +20,7 @@
                         <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                        <a class="nav-link" href="about">About <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
                         <a class="nav-link" href="#">2ndpage <span class="sr-only">(current)</span></a>
@@ -67,4 +67,4 @@
           </div>
     </nav>
     
-   <div class="col-12" style="height: 200px; background-color:cadetblue"></div>  
+   <div class="col-12" style="height: 200px; background-color:#fdfff6"></div>  
