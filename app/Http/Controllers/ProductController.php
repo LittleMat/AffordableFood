@@ -62,13 +62,21 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
-        $brand_id = DB::table('products')->where('id', $id)->first()->brand_id;
-        $category_id = DB::table('products')->where('id', $id)->first()->category_id;
-        $brand_name = DB::table('brands')->where('id', $brand_id)->first()->name;
-        $category_name = DB::table('categories')->where('id', $category_id)->first()->name;
+        $product = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('brands', 'products.brand_id', '=', 'brands.id')
+            ->selectRaw('categories.id as cat_id, categories.name as cat_name, products.name as prod_name, brands.id as brand_id, brands.Name as brand_name, products.id, products.description, products.grade, products.photo')            
+            ->where('products.id', $id)->get()
+        ;
 
-        return view ('layouts.products.show_product', compact(['product', 'category_name', 'brand_name']));    
+        $supermarket_info = DB::table('supermarket_products')
+            ->join('supermarkets', 'supermarket_products.id', '=', 'supermarkets.id')
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')            
+            ->where('supermarket_products.product_id', $id)->get();
+
+        $product = $product[0];
+
+        return view ('layouts.products.show_product', compact(['product', 'supermarket_info']));    
     }
 
     /**
@@ -80,7 +88,10 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = DB::table('products')->where('id', $id)->first();
-        return view('layouts.products.edit_product', compact('product'));
+        $categories = DB::table('categories')->get();
+        $brands = DB::table('brands')->get();
+
+        return view('layouts.products.edit_product', compact(['product', 'categories', 'brands']));
     }
 
     /**
