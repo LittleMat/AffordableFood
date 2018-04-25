@@ -23,10 +23,10 @@
                         <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="#">2ndpage <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/recipes/create">create recipe<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="#">3rdpage <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/products">product <span class="sr-only">(current)</span></a>
                   </li>
             <!--</ul>
 
