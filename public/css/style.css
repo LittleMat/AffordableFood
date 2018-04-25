@@ -1,6 +1,6 @@
 body
 {
-    background-color:cadetblue;
+    background-color:#fdfff6;
 }
 
 .navbar
@@ -31,4 +31,9 @@ body
 {
     height: 40px; 
     list-style-type: none;
+}
+
+.add-margin
+{
+    margin: 5px
 }
