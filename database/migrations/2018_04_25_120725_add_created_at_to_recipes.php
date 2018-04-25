@@ -17,6 +17,7 @@ class AddCreatedAtToRecipes extends Migration
             $table->timestamps();
         });//
         
+
         DB::statement(" ALTER TABLE `recipes` MODIFY COLUMN `slug` CHAR(20) NULL DEFAULT NULL");
         
         DB::statement(" ALTER TABLE `recipes` MODIFY COLUMN `grade` CHAR(30)  NULL DEFAULT NULL");
@@ -24,6 +25,7 @@ class AddCreatedAtToRecipes extends Migration
         DB::statement(" ALTER TABLE `recipes` MODIFY COLUMN `photo` CHAR(30)  NULL DEFAULT NULL");
         
         DB::statement(" ALTER TABLE `recipes` MODIFY COLUMN `author_id` int(11)  NULL DEFAULT NULL");
+
         
     }
 

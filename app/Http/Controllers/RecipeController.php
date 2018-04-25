@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers;
-use App\Recipes ;
+use App\Recipes;
 use Session;
 use App\User;
 
@@ -52,8 +52,7 @@ class RecipeController extends Controller
         $recipes->description = $request->description;
         $recipes->photo = $request->image;
         
-        //$userId = Auth::id();
-        //$recipes->author_id = $userId;
+        $recipes->author_id = Auth::user()->getId();
         
         $recipes->save();
         
