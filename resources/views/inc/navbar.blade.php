@@ -2,7 +2,7 @@
     
      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     
-        <div class="text-center container-fluid logo " > 
+        <div class="text-center container-fluid logo"> 
             <a  href="/" class="navbar-brand">
                 <img src="{{asset('image/logo.png')}}"  alt="Logo" >               
             </a>
@@ -67,4 +67,4 @@
           </div>
     </nav>
     
-   <div class="col-12" style="height: 200px; background-color:#fdfff6"></div>  
+   <div class="col-12" style="height: 120px; background-color:#fdfff6"></div>  
