@@ -18,7 +18,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        $recipes= Recipes::all(); //store all the recipes
+        return view('layouts.recipes.index')-> withrecipes($recipes);
     }
 
     /**
