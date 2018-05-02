@@ -8,7 +8,11 @@
 <body>
      
     @include('inc/navbar')
-
+    
+    
+    @if( is_null(Auth::user()) )  
+    <h1 class="alert alert-danger text-center">You need to be connected to make recipes</h1>
+    @else
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -32,6 +36,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <footer>
             @include('inc/footer')
