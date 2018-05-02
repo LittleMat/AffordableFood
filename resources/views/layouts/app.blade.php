@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
- <head>
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>  
-    
+ <head>  
     @include('inc/head')
 </head> 
 
