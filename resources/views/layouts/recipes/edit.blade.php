@@ -17,25 +17,30 @@
             </div>
     @else
            <div class="row">
-                <div class="col-sm-9">
-                    <h1> {{ $recipes->title }} </h1>
-                    <p> {{ $recipes->description }} </p> 
-                </div> 
+                                  
+                <div class="col-sm-9">    
+                    
+                     {!! Form::model($recipes, ['route' => ['recipes.update', $recipes->id], 'method' => 'PUT' ]) !!}
+                          
+                        <h4> {{ Form::label('title', 'Title :') }} </h4>
+                        {{ Form::text('title', null, ["class" => 'form-control form-control-lg mb-2']) }}
+                        
+                        <h4> {{ Form::label('description', 'Description :') }} </h4>
+                        {{ Form::textarea('description', null, ["class" => 'form-control mb-2']) }} 
+                                                  
+                </div>              
+                
                 <div class="col-sm-3">
                    <div class="well">
                        
                         <div class="col-sm-9">
-                                  {!! Html::linkRoute('recipes.edit', 'Edit', array($recipes->id), array('class'=>'btn btn-primary btn-block') ) !!}
+                                  {!! Html::linkRoute('recipes.show', 'Cancel', array($recipes->id), array('class'=>'btn btn-primary btn-block') ) !!}
                                   <br>    
                         </div>
                         
                         <div class="col-sm-9">
-                                {!! Form::open( ['route' => ['recipes.destroy', $recipes->id], 'method' => 'DELETE'] ) !!}
-                                    
-                                    {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-block']) !!}
-                                  
-                                {!! Form::close()!!}
-                                  
+                                 {{ Form::submit('Save', ['class' => 'btn btn-success btn-block']) }}
+                                 {!! Form::close() !!}       
                         </div>
                    </div>
                 </div>
@@ -51,6 +56,8 @@
                     <p>{{ date('M j, Y', strtotime($recipes->updated_at)) }}</p>
                 </div>  
             </div>
+            
+            
     @endif
     
     
