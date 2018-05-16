@@ -84,7 +84,8 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipes = Recipes::find($id);
+        return view('layouts/recipes/edit')->with('recipes',$recipes);    
     }
 
     /**
@@ -96,7 +97,25 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        //validate
+        $this->validate($request,array(
+                'title' => 'required|max:255|min:5',
+                'description' => 'required'
+        ));
+        
+        //store
+        $recipes = Recipes::find($id);
+        
+        $recipes->title = $request->input('title');
+        $recipes->description = $request->input('description');
+        
+        $recipes->save();
+        Session::flash('success','Recipe updated :)');
+        
+        //redirect
+        return redirect()->route('recipes.show',$recipes->id);
+        
     }
 
     /**
@@ -106,7 +125,12 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {  
+        $recipes = Recipes::find($id);
+        
+        $recipes->delete();
+        
+        Session::flash('success','The post was deleted :)');
+        return redirect()->route('recipes.index');        
     }
 }

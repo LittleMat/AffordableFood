@@ -12,15 +12,16 @@
         
     <div class="container">
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <h1>All Recipes</h1>
             </div>
 
-            <div class="col-md-2">
-                <a href="{{route('recipes.create')}}" class="btn btn-lg btn-block btn-primary">Create new recipes</a>
+            <div class="col-md-4">
+                <a href="{{route('recipes.create')}}" class="btn btn-lg btn-block btn-primary">Create a new recipe</a>
             </div>
             <hr>
         </div>
+        <br>
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
