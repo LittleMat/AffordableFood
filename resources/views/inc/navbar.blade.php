@@ -1,4 +1,4 @@
-     <div class="col-12 fixed-top" style="height: 120px; background-color:#fdfff6"></div>  
+     <div class="col-12 fixed-top" style="height: 50px; background-color:#fdfff6"></div>  
     
      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     
@@ -27,6 +27,10 @@
                   </li>
                   <li class="nav-item">
                         <a class="nav-link" href="/products">products <span class="sr-only">(current)</span></a>
+                  </li>
+
+                  <li class="nav-item">
+                        <a class="nav-link" href="/supermarketinfo">supermarketinfo <span class="sr-only">(current)</span></a>
                   </li>
             <!--</ul>
 
@@ -67,4 +71,4 @@
           </div>
     </nav>
     
-   <div class="col-12" style="height: 120px; background-color:#fdfff6"></div>  
+   <div class="col-12" style="height: 50px; background-color:#fdfff6"></div>  

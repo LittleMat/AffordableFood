@@ -21,6 +21,11 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/supermarketinfo', function () {
+    return view('supermarketinfo');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

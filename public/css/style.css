@@ -6,7 +6,6 @@ body
 .navbar
 {
     padding: 0px;
-    top: 40px;
 }
 .navbar-nav
 {
@@ -17,7 +16,7 @@ body
 .logo 
 {
     float: left;
-    height: 80px;
+    height: 70px;
     width: 170px;
     margin:0px;
 }
@@ -30,7 +29,7 @@ body
 */
 
 img {
-    height: 100px;
+    height: 60px;
 }
 
 .Filer 
@@ -41,17 +40,19 @@ img {
 
 .add-margin
 {
-    margin: 5px
+    margin: 5px;
 }
 
 #createproduct {
-    width: 150px
+    width: 150px;
 }
 
 h1.createproduct {
     text-align: center;
 }
 
-.nav-link {
-    
+.searchbar {
+    display: inline-block;
+    width: 20%;
+    float: left;
 }
