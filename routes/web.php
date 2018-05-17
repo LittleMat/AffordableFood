@@ -19,7 +19,27 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
+
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard.dashboard_main');
+})->name('dashboard.index');
+
+
+
+Route::get('/dashboard/parameters', 'UserController@show')->name('user_parameters');
+
+Route::get('/dashboard/favorite_products', function () {
+    return view('layouts.dashboard.dashboard_item.favorite_products');
+})->name('dashboard.favorite_products');
+
+Route::get('/dashboard/favorite_recipes', function () {
+    return view('layouts.dashboard.dashboard_item.favorite_recipes');
+})->name('dashboard.favorite_recipes');
+
+Route::get('/dashboard/my_recipes', function () {
+    return view('layouts.dashboard.dashboard_item.my_recipes');
+})->name('dashboard.my_recipes');
 
 Auth::routes();
 
