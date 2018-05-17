@@ -9,17 +9,45 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
           	<!-- maincontent stuff here -->
+
+
           	<div class="container">
-		    <h1>All products</h1>
-			<br>
+		    <h1>List of products</h1>
+
+		    {{Form::open(array('url'=>'/'))}}
+		    	{{Form::text('keyword', null, array('placeholder'=>'search by keyword'))}}
+		    	{{Form::submit('search')}}
+		    {{Form::close()}}
+
+			<hr>
+
+			<table class="table table-striped table-bordered">
+				
+				<thead>
+					<tr>
+						<th>(image)</th>
+						<th>Product Name</th>
+						<th>Product Description</th>
+						<th>Supermarket</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
 					@foreach($products as $product)
-						<a href="{{ route('products.show', $product->id)}}" class="product">
-							<div>
-								
-								<h2>{{$product->name}}</h2>
-								<p>{{$product->description}}</p>	
-							</div>						
-						</a>			
+					
+					<tr>
+
+						<td>
+							{{$product->photo}}
+						</td>
+						<td>
+							<a href="{{ route('products.show', $product->id)}}" class="product">
+								{{$product->name}}
+							</a>
+						</td>
+						<td>{{$product->description}}</td>
+						<td></td>
 					@endforeach
 					<br>
 
@@ -30,8 +58,6 @@
 			</div>
 		</div>
 			<!-- maincontent -->
-
-          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
           </div>
         </main>
       </div>

@@ -60,3 +60,12 @@ h1.createproduct {
     width: 20%;
     float: left;
 }
+
+.productrow {
+    border: 1px;
+}
+
+.product {
+    color:black;
+}
+
