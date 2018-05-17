@@ -8,6 +8,7 @@ use App\Http\Controllers;
 use App\Recipes;
 use Session;
 use App\User;
+use Image;
 
 class RecipeController extends Controller
 {
@@ -18,7 +19,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes= Recipes::all(); //store all the recipes
+        $recipes= Recipes::orderBy('updated_at', 'desc')->paginate(5); //store all the recipes
         return view('layouts.recipes.index')-> withrecipes($recipes);
     }
 
@@ -51,9 +52,19 @@ class RecipeController extends Controller
         
         $recipes->title = $request->title;
         $recipes->description = $request->description;
-        $recipes->photo = $request->image;
         
         $recipes->author_id = Auth::user()->getId();
+        
+        
+        if ($request->hasFile('featured_image')){
+            
+            $image = $request->file('featured_image');
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('image/'.$imagename);
+            Image::make($image)->save($location);
+            
+            $recipes->image = $imagename ;
+        }
         
         $recipes->save();
         
@@ -109,6 +120,16 @@ class RecipeController extends Controller
         
         $recipes->title = $request->input('title');
         $recipes->description = $request->input('description');
+        
+        if ($request->hasFile('featured_image')){
+            
+            $image = $request->file('featured_image');
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('image/'.$imagename);
+            Image::make($image)->save($location);
+            
+            $recipes->image = $imagename ;
+        }
         
         $recipes->save();
         Session::flash('success','Recipe updated :)');
