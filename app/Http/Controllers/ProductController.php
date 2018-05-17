@@ -70,9 +70,10 @@ class ProductController extends Controller
         ;
 
         $supermarket_info = DB::table('supermarket_products')
-            ->join('supermarkets', 'supermarket_products.id', '=', 'supermarkets.id')
-            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')            
-            ->where('supermarket_products.product_id', $id)->get();
+            ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')  
+            ->where('supermarket_products.product_id', $id)
+            ->get();
 
         $product = $product[0];
 
