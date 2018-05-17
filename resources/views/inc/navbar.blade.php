@@ -3,7 +3,7 @@
      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     
         <div class="text-center container-fluid logo"> 
-            <a  href="/" class="navbar-brand">
+            <a  href="{{ route('home') }}" class="navbar-brand">
                 <img src="{{asset('image/logo.png')}}"  alt="Logo" >               
             </a>
 
@@ -20,13 +20,13 @@
                         <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item active">
-                        <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('about') }}">About <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="/recipes">recipes<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('recipes.index') }}">Recipes<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="/products">products <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Products <span class="sr-only">(current)</span></a>
                   </li>
             <!--</ul>
 
@@ -54,6 +54,9 @@
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('user_parameters') }}">
+                                        Dashboard
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

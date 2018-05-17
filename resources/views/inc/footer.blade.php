@@ -3,3 +3,5 @@
     <a class="col-6" href="#">Disclaimers </a>
 </div>
 <div style="height: 30px;"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
