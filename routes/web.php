@@ -46,3 +46,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
+
+Route::get('FavoriteRecipes', 'Auth\FavoriteRecipesController@index');
