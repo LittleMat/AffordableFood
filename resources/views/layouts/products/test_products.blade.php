@@ -25,7 +25,7 @@
 				
 				<thead>
 					<tr>
-						<th>(image)</th>
+						<th></th>
 						<th>Product Name</th>
 						<th>Product Description</th>
 						<th>Supermarket</th>
@@ -37,19 +37,21 @@
 					@foreach($products as $product)
 					
 					<tr>
-
 						<td>
-							{{$product->photo}}
+							<img src="{{ asset($product->photo) }}" class="productimages" />
 						</td>
-						<td>
-							<a href="{{ route('products.show', $product->id)}}" class="product">
-								{{$product->name}}
-							</a>
+						<td><a href="{{ route('products.show', $product->id)}}" class="product">
+							{{$product->name}}</a>
 						</td>
 						<td>{{$product->description}}</td>
 						<td></td>
 					@endforeach
-					<br>
+
+			<table>
+
+			{{ $products->links() }}
+			
+			<br>
 
 			</div>
 			<br>

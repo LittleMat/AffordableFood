@@ -69,3 +69,7 @@ h1.createproduct {
     color:black;
 }
 
+.productimages {
+    height: 100px;
+    width: 100px;
+}

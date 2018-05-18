@@ -15,10 +15,12 @@
                     </tr>
                   </thead>
 
+
+
                 <tbody>
                     <tr>
                       <td><img src="{{asset('image/supermarkets/rema1000.jpg')}}" alt="rema1000"></td>
-                      <td>Rema1000</td>
+                      <td></td>
                       <td>location1</td>
                       <td>08:00 - 15:00</td>
                     </tr>
@@ -37,7 +39,6 @@
                 </tbody>
 
             </table>
-   
 
             </div>
 

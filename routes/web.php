@@ -41,24 +41,7 @@ Route::get('/dashboard/my_recipes', function () {
     return view('layouts.dashboard.dashboard_item.my_recipes');
 })->name('dashboard.my_recipes');
 
-Route::get('/supermarketinfo', function () {
-    return view('supermarketinfo');
-});
 
-Route::get('/products/bread_product', function () {
-    return view('bread_product');
-});
-
-Route::post('/', function() {
-	$keyword = Input::get('keyword');
-
-	$products = Product::where('name', 'LIKE', '%'.$keyword)->get();
-	var_dump('search results');
-
-	foreach($products as $product){
-		var_dump($product->name);
-	}
-});
 
 
 

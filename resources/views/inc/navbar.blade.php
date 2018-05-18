@@ -30,7 +30,7 @@
                   </li>
 
                   <li class="nav-item">
-                        <a class="nav-link" href="/supermarketinfo">supermarketinfo <span class="sr-only">(current)</span></a>
+                        </span></a>
                   </li>
             <!--</ul>
 
