@@ -2,9 +2,9 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link active" href="{{route('user_parameters')}}">
+        <a class="nav-link active" href="{{route('user.parameters')}}">
           <span data-feather="home"></span>
-          Parameters <span class="sr-only">(current)</span>
+          Settings <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">

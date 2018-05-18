@@ -7,37 +7,81 @@
 	<div class="col-lg-10 bg-light">
 		<div class="row">
 			<div class="col-lg-9">
-				<table class="table">
-				  <tbody>
-				    <tr onclick="put_input('first_name', 'input')">
-				      <td>First Name : </td>
-				      <td class="first_name">{{$user->first_name}}</td>
-				    </tr>
-				    <tr>
-				      <td>Last Name : </td>
-				      <td>{{$user->last_name}}</td>
-				    </tr>
-					<tr>
-					  <td>Email : </td>
-					  <td>{{$user->email}}</td>
-					</tr>
-					<tr>
-					  <td>Adress : </td>
-					  <td>{{$user->adress}}</td>
-					</tr>
-					<tr>
-					  <td>Language : </td>
-					  <td>{{$user->language}}</td>
-					</tr>
-					<tr>
-					  <td>Currency : </td>
-					  <td>{{$user->currency}}</td>
-					</tr>
-				  </tbody>
-				</table>
+
+				<form action="{{route('user.update')}}" method="POST" class="form-horizontal">
+					{{ csrf_field() }}
+					{{ method_field("PUT")}}
+
+					<table class="table">
+					  <tbody>
+					    <tr>
+					      <td>First Name : </td>
+					      <td>
+							  <div class="form-row">
+							  	<div class="form-group col-md-6">
+							   		<input type="text" class="form-control first_name" id="first_name" name="first_name" value="{{$user->first_name}}" style="border:0px solid transparent">
+							    </div>
+							    <div class="form-group col-md-2">
+							  		<button type="submit" class="btn btn-primary validate_first_name" style="visibility:hidden">Validate</button> 
+							  	</div>
+							  </div>
+						  </td>
+					    </tr>
+					    <tr>
+					      <td>Last Name : </td>
+					      <td>
+					      	<div class="form-row">
+					      		<div class="form-group col-md-6">
+					      	 		<input type="text" class="form-control last_name" id="last_name" name="last_name" value="{{$user->last_name}}" style="border:0px solid transparent">
+					      	  </div>
+					      	  <div class="form-group col-md-2">
+					      			<button type="submit" class="btn btn-primary validate_last_name" style="visibility:hidden">Validate</button> 
+					      		</div>
+					      	</div>
+					      </td>
+					    </tr>
+						<tr>
+						  <td>Email : </td>
+						  <td>
+						  	<div class="form-row">
+						  		<div class="form-group col-md-6">
+						  	 		<input type="text" class="form-control email" id="email" name="email" value="{{$user->email}}" style="border:0px solid transparent">
+						  	  </div>
+						  	  <div class="form-group col-md-2">
+						  			<button type="submit" class="btn btn-primary validate_email" style="visibility:hidden">Validate</button> 
+						  		</div>
+						  	</div>
+						  </td>
+						</tr>
+						<tr>
+						  <td>Adress : </td>
+						  <td>
+						  	<div class="form-row">
+						  		<div class="form-group col-md-6">
+						  	 		<textarea type="text" class="form-control adress" id="adress" name="adress" style="border:0px solid transparent">{{$user->adress}}</textarea>
+						  	  </div>
+						  	  <div class="form-group col-md-2">
+						  			<button type="submit" class="btn btn-primary validate_adress" style="visibility:hidden">Validate</button> 
+						  		</div>
+						  	</div>
+						  </td>
+						</tr>
+						<tr>
+						  <td>Language : </td>
+						  <td>{{$user->language}}</td>
+						</tr>
+						<tr>
+						  <td>Currency : </td>
+						  <td>{{$user->currency}}</td>
+						</tr>
+					  </tbody>
+					</table>
+				</form>
 			</div>
+
+
 			<div class="col-lg-3 text-center">
-				<img src="{{asset($user->photo)}}" class="img-fluid" alt="Responsive image">	
+				<img src="{{asset($user->photo)}}" class="img-fluid img-account" alt="Responsive image">	
 				<br>
 				<p>Status : {{$status->name}}</p>	
 			</div>
@@ -68,3 +112,4 @@
 	</div>
 
 @endsection
+
