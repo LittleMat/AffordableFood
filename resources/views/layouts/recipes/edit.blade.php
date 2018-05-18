@@ -20,13 +20,16 @@
                                   
                 <div class="col-sm-9">    
                     
-                     {!! Form::model($recipes, ['route' => ['recipes.update', $recipes->id], 'method' => 'PUT' ]) !!}
+                     {!! Form::model($recipes, ['route' => ['recipes.update', $recipes->id], 'method' => 'PUT' , 'files'=>true ]) !!}
                           
                         <h4> {{ Form::label('title', 'Title :') }} </h4>
                         {{ Form::text('title', null, ["class" => 'form-control form-control-lg mb-2']) }}
                         
                         <h4> {{ Form::label('description', 'Description :') }} </h4>
                         {{ Form::textarea('description', null, ["class" => 'form-control mb-2']) }} 
+                                                 
+                    {{ Form::label('featured_image', 'image :') }}
+                    {{ Form::file('featured_image', array('class'=>'form-control')) }}
                                                   
                 </div>              
                 
@@ -42,6 +45,7 @@
                                  {{ Form::submit('Save', ['class' => 'btn btn-success btn-block']) }}
                                  {!! Form::close() !!}       
                         </div>
+                        
                    </div>
                 </div>
             </div>

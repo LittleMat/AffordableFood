@@ -27,7 +27,8 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/dashboard/parameters', 'UserController@show')->name('user_parameters');
+Route::get('/dashboard/parameters', 'UserController@show')->name('user.parameters');
+Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
 
 Route::get('/dashboard/favorite_products', function () {
     return view('layouts.dashboard.dashboard_item.favorite_products');
@@ -51,3 +52,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
+
+Route::get('FavoriteRecipes', 'Auth\FavoriteRecipesController@index');
