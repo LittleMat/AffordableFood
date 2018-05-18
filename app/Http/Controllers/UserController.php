@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -29,4 +31,25 @@ class UserController extends Controller
 	        return view ('layouts.dashboard.dashboard_item.parameters', compact(['user', 'stat', 'status']));    
     	}
     }
+
+    public function update(Request $request)
+    {
+    	if(Auth::check()){
+			$id = Auth::id();
+
+			//dd($request);
+
+			DB::table('users')
+				->where('id', $id)
+				->update([
+		            'first_name' => $request->first_name, 
+		            'last_name' => $request->last_name,
+		            'email' => $request->email,
+		            'adress' => $request->adress
+	        	]);
+
+	        return redirect(route('user.parameters'));
+		}
+       
+    } 
 }
