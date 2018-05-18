@@ -4,6 +4,11 @@
 
 	<div>
 		Favorite recipes
+
+ 
+        
+
+
 	</div>
 
 @endsection
