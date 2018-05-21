@@ -36,8 +36,20 @@ class UserController extends Controller
     {
     	if(Auth::check()){
 			$id = Auth::id();
+			
+			dd($request->hasFile('file_photo'));
 
-			//dd($request);
+
+			if ($request->hasFile('file_photo')){
+            
+	            $image = $request->file('file_photo');
+	            $imagename = time().'.'.$image->getClientOriginalExtension();
+	            $location = public_path('image/users/'.$imagename);
+	            Image::make($image)->save($location);
+	        }
+
+	        dd($location);
+
 
 			DB::table('users')
 				->where('id', $id)
@@ -45,7 +57,8 @@ class UserController extends Controller
 		            'first_name' => $request->first_name, 
 		            'last_name' => $request->last_name,
 		            'email' => $request->email,
-		            'adress' => $request->adress
+		            'adress' => $request->adress,
+		            'photo' => $location
 	        	]);
 
 	        return redirect(route('user.parameters'));

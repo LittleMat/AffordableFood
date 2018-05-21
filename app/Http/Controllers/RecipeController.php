@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers;
 use App\Recipes;
+use App\FavoriteRecipes;
 use Session;
 use App\User;
 use Image;
+use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
@@ -19,8 +21,19 @@ class RecipeController extends Controller
      */
     public function index()
     {
+        $favorite_recipes = collect(['recipe_id' => -1]);
+
+        $connected=false;
+
         $recipes= Recipes::orderBy('updated_at', 'desc')->paginate(5); //store all the recipes
-        return view('layouts.recipes.index')-> withrecipes($recipes);
+
+        if(Auth::check()){
+            $connected = true;
+            $id = Auth::id();
+            $favorite_recipes = DB::table('favorite_recipes')->where('user_id', $id)->select('recipe_id')->get();
+        }
+
+        return view('layouts.recipes.index', compact(['recipes', 'favorite_recipes', 'connected']));
     }
 
     /**
@@ -55,7 +68,7 @@ class RecipeController extends Controller
         
         $recipes->author_id = Auth::user()->getId();
         
-        
+
         if ($request->hasFile('featured_image')){
             
             $image = $request->file('featured_image');
@@ -120,7 +133,7 @@ class RecipeController extends Controller
         
         $recipes->title = $request->input('title');
         $recipes->description = $request->input('description');
-        
+
         if ($request->hasFile('featured_image')){
             
             $image = $request->file('featured_image');

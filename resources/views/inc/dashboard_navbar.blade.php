@@ -8,13 +8,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('dashboard.favorite_recipes')}}">
+        <a class="nav-link" href="{{route('user.favorite_recipes')}}">
           <span data-feather="file"></span>
           Favorite recipes
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('dashboard.favorite_products')}}">
+        <a class="nav-link" href="{{route('user.favorite_products')}}">
           <span data-feather="file"></span>
           Favorite products
         </a>
