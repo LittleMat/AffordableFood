@@ -53,7 +53,18 @@
 				  	@foreach($supermarket_info as $info)
 				    <tr>
 				      <th scope="row">{{$info->Name}}</th>
-				      <td>{{$info->price}}</td>
+				      <td>
+                        @if( is_null(Auth::user()) )  
+                            {{ $info->price }} kr
+                        @else
+                            @foreach($currencies as $curr)
+                                  @if( Auth::user()->currency === $curr->id)
+                                        {{ $info->price*$curr->rate }} {{ $curr->symbol }}
+                                  @endif
+                            @endforeach
+                        @endif
+				          
+				      </td>
 				      <td>{{$info->quantity}}{{$info->measure_type}}</td>
 				    </tr>
 				    @endforeach
@@ -64,7 +75,5 @@
 			</div>
 		</div>
 	</div>
-</div>
-	
 		
 @stop
