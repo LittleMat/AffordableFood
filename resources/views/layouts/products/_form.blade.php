@@ -1,4 +1,3 @@
-
 <div class="form-group">
 	<label for="title"  class="control-label sr-only"> Name of the product </label>
 	<input type="text" id="title" name="title" placeholder="Name of the product" value="{{ isset($product->name) ? $product->name : old('title')}}" class="form-control"><br>	
@@ -31,6 +30,11 @@
 	      @endforeach
 	    </select>
 	</div>
+
+	<div class="col-lg-6">
+			{{ Form::file('image', array('class'=>'form-control')) }}
+	</div>
+
 </div>
 
 <br>

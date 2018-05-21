@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = DB::table('products')->get();
-        return view('layouts.products.test_products', compact('products'));
+        $products = DB::table('products')->paginate(5);
+        $categories = DB::table('categories')
+            ->select('categories.name')
+            ->get();
+        return view('layouts.products.test_products', compact(['categories', 'products']));
     }
 
     /**
@@ -74,10 +78,14 @@ class ProductController extends Controller
             ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')  
             ->where('supermarket_products.product_id', $id)
             ->get();
+        
+        $currencies = DB::table('currencies')
+            ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
+            ->get();
 
         $product = $product[0];
 
-        return view ('layouts.products.show_product', compact(['product', 'supermarket_info']));    
+        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies']));    
     }
 
     /**
@@ -128,4 +136,5 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+
 }

@@ -17,6 +17,13 @@ Route::get('/', function () {
      return view('Layouts.app');
 });
 
+// Route::get('/products', 'ProductController@categorienames')->name('products._productnav');
+
+// Route::get('/{lang?}', function ($lang=null) {
+// 	 App::setlocale($lang);
+//      return view('#');
+// });
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -38,6 +45,11 @@ Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->n
 Route::get('/dashboard/my_recipes', function () {
     return view('layouts.dashboard.dashboard_item.my_recipes');
 })->name('dashboard.my_recipes');
+
+
+
+
+
 
 Auth::routes();
 
