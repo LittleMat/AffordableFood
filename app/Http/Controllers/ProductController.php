@@ -78,10 +78,14 @@ class ProductController extends Controller
             ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')  
             ->where('supermarket_products.product_id', $id)
             ->get();
+        
+        $currencies = DB::table('currencies')
+            ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
+            ->get();
 
         $product = $product[0];
 
-        return view ('layouts.products.show_product', compact(['product', 'supermarket_info']));    
+        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies']));    
     }
 
     /**
