@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Favorite_Recipes extends Authenticatable
+class FavoriteRecipes extends Authenticatable
 {
     use Notifiable;
 
@@ -15,7 +15,7 @@ class Favorite_Recipes extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'recipe_id', 'user_id'
+        'product_id', 'user_id'
     ];
 
     /**

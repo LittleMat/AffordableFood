@@ -48,7 +48,6 @@ $('.adress').on('focus', function () {
 
 
 
-
 $( '.img-account' )
   .mouseenter(function() {
 	$(this).css('border','2px solid transparent');
@@ -56,3 +55,9 @@ $( '.img-account' )
   .mouseleave(function() {
     $( this ).css('border','0px transparent');
   });
+
+$( '.img-account' ).on('click', function(){
+	$('#file_photo').click();
+	$('.validate_image').css('visibility', 'visible');
+});
+

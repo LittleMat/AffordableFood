@@ -32,6 +32,7 @@
                         <th>Description</th>
                         <th>Created At</th>
                         <th></th>
+                        <th></th>
                     </thead>
 
                     <tbody>
@@ -53,6 +54,15 @@
                                 <td>
                                     <a href="{{route('recipes.show', $recipe->id)}}" class='btn btn-default btn-sm'>View </a>
                                     {!! Html::linkRoute('recipes.edit', 'Edit', array($recipe->id), array('class'=>'btn btn-default btn-sm') ) !!}
+                                </td>
+                                <td>
+                                    @if($connected)
+                                        @if($favorite_recipes->contains('recipe_id', $recipe->id))
+                                            <a href="{{route('recipes.make_fav', $recipe->id)}}" class='btn btn-default btn-sm'> <i class="fas fa-star"></i> </a>
+                                        @else
+                                            <a href="{{route('recipes.make_fav', $recipe->id)}}" class='btn btn-default btn-sm'> <i class="far fa-star"></i> </a>
+                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach  
