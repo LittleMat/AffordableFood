@@ -38,7 +38,8 @@
 					
 					<tr>
 						<td>
-							<img src="{{ asset($product->photo) }}" class="productimages" />
+							
+							<img src="{{ ($product->photo) }}" class="productimages" />
 						</td>
 						<td><a href="{{ route('products.show', $product->id)}}" class="product">
 							{{$product->name}}</a>

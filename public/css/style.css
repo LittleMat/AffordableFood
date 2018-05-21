@@ -25,12 +25,9 @@ body
     margin:0px;
 }
 
-/*
-.logo img 
-{
-    height: 170px;
+.categoryname {
+    color: green;
 }
-*/
 
 img {
     height: 60px;
@@ -73,3 +70,4 @@ h1.createproduct {
     height: 100px;
     width: 100px;
 }
+

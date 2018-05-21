@@ -17,6 +17,13 @@ Route::get('/', function () {
      return view('Layouts.app');
 });
 
+// Route::get('/products', 'ProductController@categorienames')->name('products._productnav');
+
+// Route::get('/{lang?}', function ($lang=null) {
+// 	 App::setlocale($lang);
+//      return view('#');
+// });
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -53,4 +60,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
 
-Route::get('FavoriteRecipes', 'Auth\FavoriteRecipesController@index');
+// Route::get('FavoriteRecipes', 'Auth\FavoriteRecipesController@index');

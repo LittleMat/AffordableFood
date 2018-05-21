@@ -19,34 +19,22 @@
                   <li class="nav-item active d-md-none Filer">
                         <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('about') }}">About <span class="sr-only">(current)</span></a>
+                  <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products.index') }}">{{__('navbar.products')}} <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="{{ route('recipes.index') }}">Recipes<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('recipes.index') }}">{{__('navbar.recipes')}}<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">Products <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('about') }}">{{__('navbar.about')}} <span class="sr-only">(current)</span></a>
                   </li>
 
                   <li class="nav-item">
                         </span></a>
                   </li>
-            <!--</ul>
-
-            <ul class="navbar-nav ml-auto Aut">
-                       
-                        <li class="nav-item active d-md-none Filer">
-                            <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active d-md-none Filer">
-                            <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
-                        </li> -->
-                       
-                        <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -69,6 +57,9 @@
                                 </div>
                             </li>
                         @endguest
+
+
+
             </ul>
 
           </div>

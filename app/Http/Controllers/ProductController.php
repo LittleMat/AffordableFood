@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +19,10 @@ class ProductController extends Controller
     public function index()
     {
         $products = DB::table('products')->paginate(5);
-        return view('layouts.products.test_products', compact('products'));
+        $categories = DB::table('categories')
+            ->select('categories.name')
+            ->get();
+        return view('layouts.products.test_products', compact(['categories', 'products']));
     }
 
     /**
@@ -129,6 +133,4 @@ class ProductController extends Controller
         return redirect()->route('products.index');
     }
 
-
-    
 }

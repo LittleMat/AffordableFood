@@ -36,7 +36,7 @@
 
                     <tbody>
 
-                        @foreach($recipes as  $recipe)    
+                        @foreach($recipes as $recipe)    
                             <tr>
                                 <th>            <!-- {{ $recipe->id }} -->
                                     @if( isset($recipe['image']) )
