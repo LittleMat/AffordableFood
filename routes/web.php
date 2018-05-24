@@ -36,19 +36,15 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/parameters', 'UserController@show')->name('user.parameters');
 Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
+Route::get('/dashboard/favorite_products', "FavoriteProductController@show")->name('user.favorite_products');
+Route::get('/dashboard/favorite_recipes', "FavoriteRecipeController@show")->name('user.favorite_recipes');
+Route::get('/dashboard/favorite_recipes/destroy/{id}', "FavoriteRecipeController@destroy")->name('user.favorite_recipes.destroy');
 
-Route::get('/dashboard/favorite_products', function () {
-    return view('layouts.dashboard.dashboard_item.favorite_products');
-})->name('dashboard.favorite_products');
-
-Route::get('/dashboard/favorite_recipes', function () {
-    return view('layouts.dashboard.dashboard_item.favorite_recipes');
-})->name('dashboard.favorite_recipes');
+Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
 
 Route::get('/dashboard/my_recipes', function () {
     return view('layouts.dashboard.dashboard_item.my_recipes');
 })->name('dashboard.my_recipes');
-
 
 
 
@@ -59,5 +55,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
+Route::get('/recipes/create', ['middleware' => ['auth'], 'uses'=>'RecipeController@create'])->name('recipes.create');
 
-// Route::get('FavoriteRecipes', 'Auth\FavoriteRecipesController@index');
+

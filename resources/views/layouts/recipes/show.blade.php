@@ -32,7 +32,7 @@
                 </div> 
                 <div class="col-sm-3">
                    <div class="well">
-                       
+
                         <div class="col-sm-9">
                                   {!! Html::linkRoute('recipes.edit', 'Edit', array($recipes->id), array('class'=>'btn btn-primary btn-block') ) !!}
                                   <br>    
@@ -46,6 +46,17 @@
                                 {!! Form::close()!!}
                                   
                         </div>
+
+                        <div class="col-sm-9">
+                            @if($connected)
+                                        @if($favorite_recipes->contains('recipe_id', $recipes->id))
+                                            <a href="{{route('recipes.make_fav', $recipes->id)}}" class='btn btn-default btn-sm'> Favorite <i class="fas fa-star"></i> </a>
+                                        @else
+                                            <a href="{{route('recipes.make_fav', $recipes->id)}}" class='btn btn-default btn-sm'> Mark as favorite <i class="far fa-star"></i> </a>
+                                        @endif
+                            @endif
+                        </div>
+
                    </div>
                 </div>
             </div>

@@ -8,9 +8,7 @@
 		<div class="row">
 			<div class="col-lg-9">
 
-				<form action="{{route('user.update')}}" method="POST" class="form-horizontal">
-					{{ csrf_field() }}
-					{{ method_field("PUT")}}
+                    {!! Form::model(['route' => ['user.update'], 'method' => 'PUT' , 'files'=>true ]) !!}
 
 					<table class="table">
 					  <tbody>
@@ -76,7 +74,6 @@
 						</tr>
 					  </tbody>
 					</table>
-				</form>
 			</div>
 
 
@@ -84,8 +81,12 @@
 				<img src="{{asset($user->photo)}}" class="img-fluid img-account" alt="Responsive image">	
 				<br>
 				<p>Status : {{$status->name}}</p>	
+				<input type="file" name="file_photo" id="file_photo" style="visibility:hidden";/>
+				<button type="submit" class="btn btn-primary validate_image">Validate</button> 
 			</div>
 		</div>
+		{!! Form::close() !!}       
+
 		
 
 		<br>
