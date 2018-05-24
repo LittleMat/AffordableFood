@@ -1,15 +1,6 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-   
-<head>
-      @include('inc/head')
-      <title>Recipes Index</title>
+@extends('layouts.app')
 
-</head>
-<body>
-   
-    @include('inc/navbar')
-        
+@section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -18,7 +9,7 @@
             <br>
 
             <div class="col-md-4">
-                <a href="{{route('recipes.create')}}" class="btn btn-lg btn-block btn-primary">Create a new recipe</a>
+                @yield('recipe.index.connected')
             </div>
             <br>
         </div>
@@ -55,7 +46,7 @@
                                     <a href="{{route('recipes.show', $recipe->id)}}" class='btn btn-default btn-sm'>View </a>
                                     {!! Html::linkRoute('recipes.edit', 'Edit', array($recipe->id), array('class'=>'btn btn-default btn-sm') ) !!}
                                 </td>
-                                <td>
+                                <td>
                                     @if($connected)
                                         @if($favorite_recipes->contains('recipe_id', $recipe->id))
                                             <a href="{{route('recipes.make_fav', $recipe->id)}}" class='btn btn-default btn-sm'> <i class="fas fa-star"></i> </a>
@@ -79,8 +70,4 @@
     </div>
     
 
-    <footer>
-         @include('inc/footer')
-    </footer>   
-</body>
-</html>
+@endsection

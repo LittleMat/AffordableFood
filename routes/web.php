@@ -50,10 +50,11 @@ Route::get('/dashboard/my_recipes', function () {
 
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
+Route::get('/recipes/create', ['middleware' => ['auth'], 'uses'=>'RecipeController@create'])->name('recipes.create');
+
 
