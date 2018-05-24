@@ -17,12 +17,18 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+
+        $supermarket_info = DB::table('supermarket_products')
+            ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+            ->get();
+
         $products = DB::table('products')->paginate(5);
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
-        return view('layouts.products.test_products', compact(['categories', 'products']));
+        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products']));
     }
 
     /**

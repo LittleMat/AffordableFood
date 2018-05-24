@@ -21,13 +21,14 @@
 
 			<hr>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-bordered">
 				
 				<thead>
 					<tr>
 						<th></th>
 						<th>Product Name</th>
 						<th>Product Description</th>
+						<th>Cheapest Price</th>
 						<th>Supermarket</th>
 					</tr>
 				</thead>
@@ -36,6 +37,10 @@
 
 					@foreach($products as $product)
 					
+						@php
+							$prices=array();
+						@endphp
+
 					<tr>
 						<td>
 							
@@ -45,7 +50,27 @@
 							{{$product->name}}</a>
 						</td>
 						<td>{{$product->description}}</td>
-						<td></td>
+						<td>
+							@foreach($supermarket_info as $supermarket)
+								@if($supermarket->product_id===$product->id)
+									<?php
+										$prices[] = $supermarket->price;
+									?>
+								@endif
+							@endforeach
+							@php
+								echo min($prices);
+								$p= min($prices);
+							@endphp
+						</td>
+						<td>
+							@foreach($supermarket_info as $supermarket)
+								@if($supermarket->product_id===$product->id AND $supermarket->price===$p)
+									{{$supermarket->Name}} 
+									<br>
+								@endif
+							@endforeach
+						</td>
 					@endforeach
 
 			<table>
