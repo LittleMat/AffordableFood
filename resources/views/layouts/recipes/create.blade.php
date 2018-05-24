@@ -1,18 +1,7 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-   
-<head>
-      @include('inc/head')
+@extends('layouts.app')
 
-</head>
-<body>
-     
-    @include('inc/navbar')
+@section('content')
     
-    
-    @if( is_null(Auth::user()) )  
-    <h1 class="alert alert-danger text-center">You need to be connected to make recipes</h1>
-    @else
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -36,12 +25,4 @@
             </div>
         </div>
     </div>
-    @endif
-
-    <footer>
-            @include('inc/footer')
-    </footer>
-
-</body>
-</html>
-
+@endsection

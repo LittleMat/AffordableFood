@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 
 class RecipeController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('admin', ['only'=>'create']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,8 +26,7 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $favorite_recipes = collect(['recipe_id' => -1]);
-
+        $favorite_recipes = null;
         $connected=false;
 
         $recipes= Recipes::orderBy('updated_at', 'desc')->paginate(5); //store all the recipes
@@ -33,7 +37,11 @@ class RecipeController extends Controller
             $favorite_recipes = DB::table('favorite_recipes')->where('user_id', $id)->select('recipe_id')->get();
         }
 
+        if(Auth::check() && Auth::user()->getRole()=='admin'){
+            return view('layouts.recipes.index_admin', compact(['recipes', 'favorite_recipes', 'connected']));
+        }
         return view('layouts.recipes.index', compact(['recipes', 'favorite_recipes', 'connected']));
+
     }
 
     /**
@@ -96,8 +104,17 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
+        $favorite_recipes = null;
+        $connected=false;
+
+        if(Auth::check()){
+            $connected = true;
+            $id = Auth::id();
+            $favorite_recipes = DB::table('favorite_recipes')->where('user_id', $id)->select('recipe_id')->get();
+        }
        $recipes = Recipes::find($id);
-       return view('layouts/recipes/show')->with('recipes',$recipes); 
+
+       return view('layouts/recipes/show', compact(['recipes', 'favorite_recipes', 'connected'])); 
     }
 
     /**

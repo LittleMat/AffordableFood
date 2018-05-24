@@ -48,11 +48,11 @@
                         </div>
 
                         <div class="col-sm-9">
-                            @if(!$favorite_recipes->contains('recipe_id', -1))
-                                        @if($favorite_recipes->contains('recipe_id', $recipe->id))
-                                            <a href="{{route('recipes.make_fav', $recipe->id)}}" class='btn btn-default btn-sm'> Mark as favorite <i class="fas fa-star"></i> </a>
+                            @if($connected)
+                                        @if($favorite_recipes->contains('recipe_id', $recipes->id))
+                                            <a href="{{route('recipes.make_fav', $recipes->id)}}" class='btn btn-default btn-sm'> Favorite <i class="fas fa-star"></i> </a>
                                         @else
-                                            <a href="{{route('recipes.make_fav', $recipe->id)}}" class='btn btn-default btn-sm'> Delete from favorite <i class="far fa-star"></i> </a>
+                                            <a href="{{route('recipes.make_fav', $recipes->id)}}" class='btn btn-default btn-sm'> Mark as favorite <i class="far fa-star"></i> </a>
                                         @endif
                             @endif
                         </div>
