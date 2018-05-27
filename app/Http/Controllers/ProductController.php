@@ -28,6 +28,7 @@ class ProductController extends Controller
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
+
         return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products']));
     }
 
@@ -72,6 +73,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
         $product = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')
