@@ -14,8 +14,11 @@
           	<div class="container">
 		    <h1>List of products</h1>
 
-			<form action="{{action('ProductController@index')}}", method="GET" role="search">
-			    <input type="text" class="form-control" name="q" placeholder="productname">
+			<form class="form-inline" action="{{action('ProductController@index')}}", method="GET" role="search">
+				<div class="form-group mx-sm-3 mb-2">
+				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="productname">
+				    <button type="submit" class="btn btn-success">Search Product</button>
+				</div>
 			</form>
 
 			<hr>
@@ -81,7 +84,7 @@
 			</div>
 			<br>
 			<br>
-			<a href="{{route('products.create')}}">Add a product</a>
+			<a class="btn btn-success"href="{{route('products.create')}}">Add a product</a>
 			</div>
 		</div>
 			<!-- maincontent -->
