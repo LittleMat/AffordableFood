@@ -12,6 +12,14 @@
 
         <div class="container">
             <div class="row">
+               
+               <h1 class="col-12 align-center">Our Objective</h1>
+               <br>
+               <p>We want to help students who dont speak danish and students who want to save money to find the product they need at an affordable price.
+                  This way we hope we can improve the life of the students by saving them time and money</p>
+               <br>
+               
+               
                 <div class="col-sm-6 col-md-3">
                     <div class="card" >
                         <img class="card-img-top img-fluid" src="{{asset('image/female-user.png')}}" alt="Card image">
