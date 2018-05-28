@@ -7,6 +7,11 @@ body
     margin-right: 10px !important;
 }
 
+.bot 
+{
+    bottom: 5px;
+}
+
 .navbar
 {
     padding: 0px;

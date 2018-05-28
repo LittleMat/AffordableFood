@@ -67,6 +67,23 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="form-group row">
+                            <label for="currency" class="col-md-4 col-form-label text-md-right">{{ __('Currency') }}</label>
+
+                            <div class="col-md-6">
+                                
+                                <select id="currency" class="form-control" id="select_currency" name="currency" value="{{ old('currency') }}" required>
+                                   
+                                    <option value="1">Euro </option>   
+                                    <option value="2">Danish krone</option>
+                                    <option value="3">British pound</option>
+                                    <option value="4">Australian dollar</option>
+                                    <option value="5">Chinese Yuan</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

@@ -9,7 +9,7 @@
             <ul class="nav flex-column">
                 @foreach($categories as $category)
               <li class="nav-item">
-                <a class="nav-link active categoryname" href=""> 
+                <a class="nav-link active categoryname" href="{{ route('products.categories', $category->name)}}"> 
                   {{$category->name}}
                 </a>
                </li>

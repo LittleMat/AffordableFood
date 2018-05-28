@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/products/categories/{category}','ProductController@categories')->name('products.categories');
 Route::resource('products', 'ProductController');
 
 Route::get('/', function () {
