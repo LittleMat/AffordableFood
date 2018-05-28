@@ -14,10 +14,9 @@
           	<div class="container">
 		    <h1>List of products</h1>
 
-		    {{Form::open(array('url'=>'/'))}}
-		    	{{Form::text('keyword', null, array('placeholder'=>'search by keyword'))}}
-		    	{{Form::submit('search')}}
-		    {{Form::close()}}
+			<form action="{{action('ProductController@index')}}", method="GET" role="search">
+			    <input type="text" class="form-control" name="q" placeholder="productname">
+			</form>
 
 			<hr>
 

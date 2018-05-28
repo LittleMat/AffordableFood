@@ -16,7 +16,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {   
 
         $supermarket_info = DB::table('supermarket_products')
@@ -24,7 +24,11 @@ class ProductController extends Controller
             ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
             ->get();
 
-        $products = DB::table('products')->paginate(5);
+        $search = $request->input('q');
+        $products = DB::table('products')
+        ->where('name', 'LIKE', '%'.$search.'%')
+        ->paginate(5);
+
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
