@@ -1,10 +1,7 @@
 body
 {
     background-color:#fdfff6;
-    
-    margin-top: 10px !important;
-    margin-left: 10px !important;
-    margin-right: 10px !important;
+    margin-top: 10px 
 }
 
 .navbar
@@ -71,8 +68,97 @@ h1.createproduct {
     width: 50px;
 }
 
-.btncolor {
-    background-color: green;
+/* test */
+
+
+a {
+  text-decoration: none;
+}
+.wrapper {
+  width: 95%;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+.pricing-table h2 {
+  font-size: 1.5em;
+  padding: 35px 10px;
+  margin: 0;
+}
+.description {
+  margin-top: 20px;
+  font-size: 0.85em;
+  padding: 0 40px;
+  font-style: italic;
 }
 
+.price,
+.pricing-box {
+  -webkit-transition: all ease-out 0.2s;
+  transition: all ease-out 0.2s;
+}
+.price {
+  background: #4a8eb2;
+  color: #fff;
+  font-size: 2em;
+  font-weight: 600;
+  position: relative;
+  padding: 20px 10px;
+  display: block;
+}
 
+.pricing-table-divider {
+  display: block;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  max-width: 80%;
+  margin: 20px auto 0;
+}
+.pricing-table {
+  border-radius: 3px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  text-align: center;
+}
+
+.pricing-box {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.13);
+  border: 2px solid rgba(10, 123, 183, 0.14);
+}
+.pricing-box:hover {
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+}
+.pricing-table ul li {
+  padding: 3px 0;
+  font-size: 0.95em;
+}
+.pricing-table ul {
+  color: #000;
+  padding: 15px 60px;
+  text-align: left;
+}
+@media (max-width: 750px) {
+  .pricing-table {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .pricing-table > div:nth-child(3) {
+    -ms-grid-row: 1;
+    grid-row-start: 1;
+  }
+  .pricing-table > div:nth-child(2) {
+    -ms-grid-row: 2;
+    grid-row-start: 2;
+  }
+  .pricing-table > div {
+    -ms-flex-item-align: top;
+    -ms-grid-row-align: top;
+    align-self: top;
+  }
+}
