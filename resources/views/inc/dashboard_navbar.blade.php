@@ -26,5 +26,6 @@
         </a>
       </li>
     </ul>
+    @yield('admin_nav_dashboard')
   </div>
 </nav> 
