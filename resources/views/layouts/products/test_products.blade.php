@@ -23,59 +23,46 @@
 
 			<hr>
 
-			<table class="table table-bordered">
-				
-				<thead>
-					<tr>
-						<th></th>
-						<th>Product Name</th>
-						<th>Product Description</th>
-						<th>Cheapest Price</th>
-						<th>Supermarket</th>
-					</tr>
-				</thead>
-
-				<tbody>
-
-					@foreach($products as $product)
+	@foreach($products as $product)
 					
-						@php
-							$prices=array();
-						@endphp
-
-					<tr>
-						<td>
-							
-							<img src="{{ ($product->photo) }}" class="productimages" />
-						</td>
-						<td><a href="{{ route('products.show', $product->id)}}" class="product">
-							{{$product->name}}</a>
-						</td>
-						<td>{{$product->description}}</td>
-						<td>
-							@foreach($supermarket_info as $supermarket)
+		@php
+			$prices=array();
+		@endphp
+			
+	<div class="wrapper">
+      	<div class="pricing-table">
+        	<div class="pricing-box">
+		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a></h2>
+		        <span class="price">
+		        			@foreach($supermarket_info as $supermarket)
 								@if($supermarket->product_id===$product->id)
-									<?php
+									@php
 										$prices[] = $supermarket->price;
-									?>
+									@endphp
 								@endif
 							@endforeach
 							@php
 								echo min($prices);
 								$p= min($prices);
 							@endphp
-						</td>
-						<td>
-							@foreach($supermarket_info as $supermarket)
+		        </span>
+		        <img src="{{ ($product->photo) }}" class="productimages" />
+		        <span class="pricing-table-divider"></span>
+		        <p class="description">{{$product->description}}</p>
+		        <span class="pricing-table-divider"></span>
+		        <p class="description">
+		        			@foreach($supermarket_info as $supermarket)
 								@if($supermarket->product_id===$product->id AND $supermarket->price===$p)
 									{{$supermarket->Name}} 
 									<br>
 								@endif
-							@endforeach
-						</td>
-					@endforeach
+							@endforeach</p>
+	        </div>
+	    </div>
+	</div>
 
-			<table>
+
+	@endforeach
 
 			{{ $products->links() }}
 			

@@ -64,11 +64,12 @@ h1.createproduct {
 }
 
 .productimages {
-    height: 50;
+    height: 50px;
     width: 50px;
+    padding-top: 10px;
 }
 
-/* test */
+/* testing the products */
 
 
 a {
@@ -102,7 +103,7 @@ a {
   font-size: 2em;
   font-weight: 600;
   position: relative;
-  padding: 20px 10px;
+  padding: 1px 1px;
   display: block;
 }
 
