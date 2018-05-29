@@ -48,9 +48,6 @@ Route::get('/dashboard/my_recipes', function () {
 })->name('dashboard.my_recipes');
 
 
-
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
