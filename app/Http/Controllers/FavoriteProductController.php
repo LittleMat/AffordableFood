@@ -15,10 +15,12 @@ class FavoriteProductController extends Controller
 			$id = Auth::id();
 
 		    $favorite_products = DB::table('favorite_products')  
+                ->selectRaw('products.id as id, products.name as name, products.photo as photo')            
             	->join('products', 'favorite_products.product_id', '=', 'products.id')
             	->where('favorite_products.user_id', $id)
 		        ->get()
 		    ;
+
 
 	       return view('layouts.dashboard.dashboard_item.favorite_products', compact(['favorite_products']));
 	   }

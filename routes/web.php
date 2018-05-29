@@ -30,6 +30,10 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/dashboard', function () {
+     if(Auth::check() && Auth::user()->getRole()=='admin'){
+     		$show_admin = true;
+            return view('layouts.dashboard.dashboard_main', compact('show_admin'));
+     }
     return view('layouts.dashboard.dashboard_main');
 })->name('dashboard.index');
 
@@ -40,12 +44,34 @@ Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.up
 Route::get('/dashboard/favorite_products', "FavoriteProductController@show")->name('user.favorite_products');
 Route::get('/dashboard/favorite_recipes', "FavoriteRecipeController@show")->name('user.favorite_recipes');
 Route::get('/dashboard/favorite_recipes/destroy/{id}', "FavoriteRecipeController@destroy")->name('user.favorite_recipes.destroy');
-
-Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
-
+Route::get('/dashboard/favorite_products/destroy/{id}', "FavoriteProductController@destroy")->name('user.favorite_products.destroy');
 Route::get('/dashboard/my_recipes', function () {
     return view('layouts.dashboard.dashboard_item.my_recipes');
 })->name('dashboard.my_recipes');
+
+Route::get('/dashboard/manage_products', function () {
+    return view('layouts.dashboard.dashboard_item.admin_manage_products');
+})->name('admin.manage_products');
+
+Route::get('/dashboard/manage_recipes', function () {
+    return view('layouts.dashboard.dashboard_item.admin_manage_recipes');
+})->name('admin.manage_recipes');
+
+
+Route::get('/dashboard/manage_supermarkets', 'SupermarketController@index')->name('admin.manage_supermarkets.index');
+Route::put('/dashboard/manage_supermarkets/edit', 'SupermarketController@update')->name('admin.manage_supermarkets.update');
+Route::get('/dashboard/manage_supermarkets/destroy/{id}', 'SupermarketController@destroy')->name('admin.manage_supermarkets.destroy');
+Route::get('/dashboard/manage_supermarkets/create', 'SupermarketController@create')->name('admin.manage_supermarkets.create');
+
+
+Route::get('/dashboard/manage_users', function () {
+    return view('layouts.dashboard.dashboard_item.admin_manage_users');
+})->name('admin.manage_users');
+
+
+
+Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
+
 
 
 
