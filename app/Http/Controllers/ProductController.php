@@ -16,13 +16,24 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $products = DB::table('products')->paginate(5);
+    public function index(Request $request)
+    {   
+
+        $supermarket_info = DB::table('supermarket_products')
+            ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+            ->get();
+
+        $search = $request->input('q');
+        $products = DB::table('products')
+        ->where('name', 'LIKE', '%'.$search.'%')
+        ->paginate(9);
+
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
-        return view('layouts.products.test_products', compact(['categories', 'products']));
+
+        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products']));
     }
 
     /**
@@ -66,6 +77,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+
         $product = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->join('brands', 'products.brand_id', '=', 'brands.id')

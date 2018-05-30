@@ -38,7 +38,6 @@ Route::get('/dashboard', function () {
 })->name('dashboard.index');
 
 
-
 Route::get('/dashboard/parameters', 'UserController@show')->name('user.parameters');
 Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
 Route::get('/dashboard/favorite_products', "FavoriteProductController@show")->name('user.favorite_products');
