@@ -148,5 +148,21 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+    
+        public function categories($category)
+    {
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('categories.name','products.id','products.name','products.description','products.grade','products.photo','products.brand_id','products.category_id')
+            ->where('categories.name', $category)
+            ->get(); 
+            
+        $categories = DB::table('categories')
+            ->select('categories.name')
+            ->get();
+        
+             
+        return view('layouts.products.category',compact(['categories', 'products']));
+    }
 
 }

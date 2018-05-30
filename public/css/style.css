@@ -4,6 +4,11 @@ body
     margin-top: 10px 
 }
 
+.bot 
+{
+    bottom: 5px;
+}
+
 .navbar
 {
     padding: 0px;
@@ -173,3 +178,7 @@ a {
     -ms-grid-row-align: top;
     align-self: top;
   }
+
+.end_row{
+    margin-bottom: 40px;
+}

@@ -107,12 +107,13 @@ class RecipeController extends Controller
         $favorite_recipes = null;
         $connected=false;
 
+       $recipes = Recipes::find($id);
+        
         if(Auth::check()){
             $connected = true;
             $id = Auth::id();
             $favorite_recipes = DB::table('favorite_recipes')->where('user_id', $id)->select('recipe_id')->get();
-        }
-       $recipes = Recipes::find($id);
+        } 
 
        return view('layouts/recipes/show', compact(['recipes', 'favorite_recipes', 'connected'])); 
     }
