@@ -14,6 +14,10 @@
 Route::get('/products/categories/{category}','ProductController@categories')->name('products.categories');
 Route::resource('products', 'ProductController');
 
+Route::post('comment.recipe_comment','CommentController@recipe_comment')->name('recipe.comment');
+Route::post('comment.product_comment','CommentController@product_comment')->name('product.comment');
+Route::resource('comment', 'CommentController');
+
 Route::get('/', function () {
      return view('Layouts.app');
 });
