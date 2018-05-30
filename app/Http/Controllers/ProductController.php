@@ -27,7 +27,7 @@ class ProductController extends Controller
         $search = $request->input('q');
         $products = DB::table('products')
         ->where('name', 'LIKE', '%'.$search.'%')
-        ->paginate(5);
+        ->paginate(9);
 
         $categories = DB::table('categories')
             ->select('categories.name')

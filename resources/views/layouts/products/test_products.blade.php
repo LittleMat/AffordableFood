@@ -18,19 +18,20 @@
 				<div class="form-group mx-sm-3 mb-2">
 				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="productname">
 				    <button type="submit" class="btn btn-success">Search Product</button>
+				    <a class="btn btn-success addproduct"href="{{route('products.create')}}">Add a product</a>
 				</div>
 			</form>
 
 			<hr>
+			
+	<div class="wrapper">
+      	<div class="pricing-table">
 
-	@foreach($products as $product)
+      	@foreach($products as $product)
 					
 		@php
 			$prices=array();
 		@endphp
-			
-	<div class="wrapper">
-      	<div class="pricing-table">
         	<div class="pricing-box">
 		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a></h2>
 		        <span class="price">
@@ -57,27 +58,17 @@
 									<br>
 								@endif
 							@endforeach</p>
-	        </div>
+			</div>
+		@endforeach
 	    </div>
 	</div>
 
-
-	@endforeach
-
 			{{ $products->links() }}
-			
-			<br>
 
-			</div>
-			<br>
-			<br>
-			<a class="btn btn-success"href="{{route('products.create')}}">Add a product</a>
-			</div>
-		</div>
-			<!-- maincontent -->
-          </div>
-        </main>
-      </div>
-    </div>
+	</div>
+
+	</div>
+
+    </main>
 
 @stop

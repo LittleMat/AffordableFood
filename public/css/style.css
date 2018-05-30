@@ -64,12 +64,23 @@ h1.createproduct {
 }
 
 .productimages {
-    height: 50px;
-    width: 50px;
+    height: 120px;
+    width: 120px;
     padding-top: 10px;
 }
 
-/* testing the products */
+.addproduct {
+  position: relative;
+  left: 20px;
+}
+
+
+
+
+
+
+
+/* CSS for products */
 
 
 a {
@@ -82,7 +93,7 @@ a {
 }
 .pricing-table h2 {
   font-size: 1.5em;
-  padding: 35px 10px;
+  padding: 15px 10px;
   margin: 0;
 }
 .description {
@@ -162,4 +173,3 @@ a {
     -ms-grid-row-align: top;
     align-self: top;
   }
-}
