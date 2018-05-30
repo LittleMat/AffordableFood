@@ -14,11 +14,11 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ">       
+            <ul class="navbar-nav">       
                  
-                  <li class="nav-item active d-md-none Filer">
+                  <!-- <li class="nav-item active d-md-none Filer">
                         <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                         <a class="nav-link" href="{{ route('products.index') }}">{{__('navbar.products')}} <span class="sr-only">(current)</span></a>
                   </li>
@@ -29,9 +29,13 @@
                         <a class="nav-link" href="{{ route('about') }}">{{__('navbar.about')}} <span class="sr-only">(current)</span></a>
                   </li>
 
-                  <li class="nav-item">
-                        </span></a>
-                  </li>
+                  <li class="nav-item">  
+                  </li>   
+    
+            </ul>
+            <ul class="navbar-nav ml-md-auto mr-5 ml-3">
+                       	<div class="d-none d-sm-block d-md-none Filer "> </div> 
+                
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a></li>
@@ -57,10 +61,9 @@
                                 </div>
                             </li>
                         @endguest
-
-
-
+                
             </ul>
+            
 
           </div>
     </nav>
