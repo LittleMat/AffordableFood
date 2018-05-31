@@ -28,6 +28,13 @@
             Users
         </a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('feedback.index')}}">
+          <span data-feather="file"></span>
+            Feedback
+        </a>
+      </li>
 	</ul>
 	  
 

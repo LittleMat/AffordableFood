@@ -61,3 +61,8 @@ $( '.img-account' ).on('click', function(){
 	$('.validate_image').css('visibility', 'visible');
 });
 
+
+
+
+
+/*  */

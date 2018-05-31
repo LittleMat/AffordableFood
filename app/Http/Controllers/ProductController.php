@@ -20,6 +20,7 @@ class ProductController extends Controller
     {
         $products = DB::table('products')->paginate(5);
         $categories = DB::table('categories')
+            ->orderBy('name')
             ->select('categories.name')
             ->get();
         return view('layouts.products.test_products', compact(['categories', 'products']));
@@ -32,8 +33,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = DB::table('categories')->get();
-        $brands = DB::table('brands')->get();
+        $categories = DB::table('categories')->orderBy('name')->get();
+        $brands = DB::table('brands')->orderBy('name')->get();
 
 
         return view('layouts.products.store_product', compact(['categories', 'brands']));

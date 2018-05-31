@@ -14,9 +14,9 @@
             <h1>List of products</h1>
 
             <!-- {{Form::open(array('url'=>'/'))}}
-{{Form::text('keyword', null, array('placeholder'=>'search by keyword'))}}
-{{Form::submit('search')}}
-{{Form::close()}} -->
+                {{Form::text('keyword', null, array('placeholder'=>'search by keyword'))}}
+                {{Form::submit('search')}}
+                {{Form::close()}} -->
 
             <hr>
 

@@ -73,7 +73,15 @@ Route::get('/dashboard/manage_users', function () {
 Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
 
 
+Route::get('/feedback', "FeedbackController@index")->name('feedback.index');
+Route::get('/feedback/create', "FeedbackController@create")->name('feedback.create');
+Route::post('/feedback/store', "FeedbackController@store")->name('feedback.store');
+Route::get('/feedback/destroy/{id}', "FeedbackController@destroy")->name('feedback.destroy');
 
+
+
+Route::post('/brand/store', 'BrandController@store')->name('brand.store');
+Route::post('/category/store', 'CategoryController@store')->name('category.store');
 
 
 
