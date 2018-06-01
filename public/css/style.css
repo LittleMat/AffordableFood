@@ -219,7 +219,6 @@ a {
   margin-top: 20px;
   font-size: 0.85em;
   padding: 0 40px;
-  font-style: italic;
 }
 
 .price,
@@ -234,6 +233,10 @@ a {
   font-weight: 600;
   position: relative;
   padding: 1px 1px;
+  display: block;
+}
+
+.price2 {
   display: block;
 }
 

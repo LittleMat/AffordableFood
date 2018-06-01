@@ -29,7 +29,7 @@ class RecipeController extends Controller
         $favorite_recipes = null;
         $connected=false;
 
-        $recipes= Recipes::orderBy('updated_at', 'desc')->paginate(5); //store all the recipes
+        $recipes= Recipes::orderBy('updated_at', 'desc')->paginate(9); //store all the recipes
 
         if(Auth::check()){
             $connected = true;
