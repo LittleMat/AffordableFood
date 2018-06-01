@@ -13,7 +13,6 @@
       	<div class="centertext">
         <h1>Affordable Food</h1>
         <p class="lead">Find the cheapest food in Horsens</p>
-        <p>For students and made by students</p>
     	</div>
       </div>
     </section>
@@ -24,7 +23,7 @@
 
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project wow animated animated4 fadeInLeft">
         <div class="project-hover">
-        	<h2>Find products</h2>
+        	<h2>Find cheap Products</h2>
             <hr />
             <p>Here you can find where you can buy the cheapest products in the supermarkets of Horsens</p>
             <a href="{{ route('products.index') }}">Search products</a>
@@ -32,18 +31,18 @@
     </div>
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
     	<div class="project-hover">
-        	<h2>Join our Community</h2>
+        	<h2>Inspiration for Recipes</h2>
             <hr />
-            <p>Become a member of our community!</p>
-            <a href="#">Become a Member</a>
+            <p>Need inspiration? Look through all the recipes submitted by the community</p>
+            <a href="{{ route('recipes.index') }}">Look at recipes</a>
         </div>
     </div>
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-3 wow animated animated2 fadeInLeft">
     	<div class="project-hover">
-        	<h2>TITLE</h2>
+        	<h2>Become a member of the community</h2>
             <hr />
-            <p></p>
-            <a href="#">Go To</a>
+            <p>Register your account for extra features</p>
+            <a href="{{ route('register') }}">Make Account</a>
         </div>
     </div>
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-4 wow animated fadeInLeft">
