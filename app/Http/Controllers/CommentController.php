@@ -29,6 +29,6 @@ class CommentController extends Controller
         $comment->product_id = $request->id;
         
         $comment->save();
-        return redirect()->route('product.show',$request->id);
+        return redirect()->route('products.show',$request->id);
     }    
 }

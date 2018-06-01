@@ -6,6 +6,11 @@
 			<div class="col-lg-6">
 
 				<h1>{{$product->prod_name}}</h1> <br>
+				
+                <div class="container">
+                    <img src="{{ asset('image/products/'.$product->photo) }}" alt="Image" class="img-fluid"  style=" max-height:400px; width: auto;">
+                </div> 
+                 
 
 				<p>Description : {{$product->description}} </p>
 				
@@ -70,21 +75,29 @@
 				    @endforeach
 				  </tbody>
 				</table>
-				
-				
-        {!! Form::open(array('route' =>['product.comment'], 'method' => 'POST' )) !!} 
+			</div>
+		</div>
+       <br>						
+       <div class="row">	
+        {!! Form::open(array('route' =>['product.comment'], 'method' => 'POST', 'class' => 'col-12' )) !!} 
 
             {{ Form::label('description', 'Your comment :') }}
-            {{ Form::text('description','Write your comment here', array('class'=>'form-control add-margin')) }}
+            {{ Form::text('description','Write your comment here', array('class'=>'form-control')) }}
             
             {{ Form::text('id', $product->id , array('class'=>'d-none')) }}
 
             {{ Form::submit('post', array('class' =>'btn add-margin') ) }}
                      
         {!! Form::close() !!}
-
-			</div>
-		</div>
+      </div>
+      
+    <br>          
+    @foreach($comments as $com)
+        <h4>{{ $com->na }}</h4>
+        <p>{{  $com->description }}</p>
+        <br>
+    @endforeach
+    
 	</div>
 		
 @stop
