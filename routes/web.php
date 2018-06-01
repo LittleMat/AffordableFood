@@ -14,8 +14,12 @@
 Route::get('/products/categories/{category}','ProductController@categories')->name('products.categories');
 Route::resource('products', 'ProductController');
 
+Route::post('comment.recipe_comment','CommentController@recipe_comment')->name('recipe.comment');
+Route::post('comment.product_comment','CommentController@product_comment')->name('product.comment');
+Route::resource('comment', 'CommentController');
+
 Route::get('/', function () {
-     return view('Layouts.app');
+     return view('home');
 });
 
 // Route::get('/products', 'ProductController@categorienames')->name('products._productnav');
@@ -70,9 +74,6 @@ Route::get('/dashboard/manage_users', function () {
 
 
 Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
-
-
-
 
 
 
