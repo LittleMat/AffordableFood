@@ -27,7 +27,7 @@
         	<h2>Find products</h2>
             <hr />
             <p>Here you can find where you can buy the cheapest products in the supermarkets of Horsens</p>
-            <a href="#">Search products</a>
+            <a href="{{ route('products.index') }}">Search products</a>
         </div>
     </div>
 	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 project project-2 wow animated animated3 fadeInLeft">
