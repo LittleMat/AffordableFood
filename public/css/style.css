@@ -1,7 +1,8 @@
 body
 {
     background-color:#fdfff6;
-    margin-top: 10px 
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .bot 
@@ -79,14 +80,127 @@ h1.createproduct {
   left: 20px;
 }
 
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
+.homepage_img1 {
+  height: 150px;
+  width: 150px;
+}
+
+.homepage_img2 {
+  height: 150px;
+  width: 150px;
+}
+
+.centertext {
+  text-align: center;
+}
+
+.toppadding {
+  height:100px;
+}
+
+.bottompadding {
+  height: 100px;
+}
+
+.homepagecard {
+  width: 20rem;
+  height: 24rem;
+
+}
+
+.title-arch {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.project {
+  width: 100%;
+  height: 500px;
+  background-image: url(http://www.rivieramayagroceries.com/wp-content/uploads/2018/01/gro.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 0 !important;
+  float:left;
+}
+
+.project-2 {
+  background-image: url(https://images-gmi-pmc.edge-generalmills.com/180d426c-7623-40e8-8450-a0bc9531aadc.jpg);
+}
+
+.project-3 {
+  background-image: url(http://www.vccpa.org/uploads/6/1/4/9/61497653/1453427472.png);
+}
+
+.project-4 {
+  background-image: url(https://www.chateaudelaresle.com/wp-content/uploads/2013/12/email-Ch%C3%A2teau-de-la-Resle.png);
+}
+
+.project-hover {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: rgba(186, 232, 2, 0.7);
+  padding: 40% 30px !important;
+}
+
+.project-hover hr {
+  height: 30px;
+  width: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  background-color: rgba(255, 255, 255, 1);
+  border: 0;
+}
+
+.project-hover a {
+  color: rgba(255, 255, 255, 1);
+  padding: 2px 22px;
+  line-height: 40px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.project-hover a:hover {
+  border-color: rgba(51, 51, 51, 1);
+  color: rgba(51, 51, 51, 1);
+  background-color: #FFF;
+}
+
+.project:hover .project-hover {
+  opacity: 1;
+}
+
+.project:hover .project-hover hr {
+  width: 100%;
+  height: 5px;
+}
 
 
 
 
 
 /* CSS for products */
-
 
 a {
   text-decoration: none;
