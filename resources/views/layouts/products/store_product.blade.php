@@ -4,13 +4,12 @@
 <div class="container">
 	<h1 class="createproduct">Create a product</h1>
 
-	<form action="{{route('products.store')}}" method="POST">
+	<form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
 		{{ csrf_field() }}
 
 		@include('layouts/products/_form', ['submitButtonText' => "Create a product"])	
 
 	<br>
-
-	</div>
+</div>
 
 @stop

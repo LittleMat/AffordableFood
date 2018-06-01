@@ -106,6 +106,13 @@ class RecipeController extends Controller
     {
         $favorite_recipes = null;
         $connected=false;
+        
+                
+        $comments = DB::table('comments')
+            ->join('users','comments.author_id','=','users.id')
+            ->selectRaw('comments.description ,users.name as na')
+            ->where('comments.recipe_id',$id)
+            ->get();
 
        $recipes = Recipes::find($id);
         
@@ -114,8 +121,7 @@ class RecipeController extends Controller
             $id = Auth::id();
             $favorite_recipes = DB::table('favorite_recipes')->where('user_id', $id)->select('recipe_id')->get();
         } 
-
-       return view('layouts/recipes/show', compact(['recipes', 'favorite_recipes', 'connected'])); 
+       return view('layouts/recipes/show', compact(['recipes', 'favorite_recipes', 'connected','comments'])); 
     }
 
     /**

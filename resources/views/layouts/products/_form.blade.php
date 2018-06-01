@@ -32,7 +32,7 @@
 	</div>
 
 	<div class="col-lg-6">
-			{{ Form::file('image', array('class'=>'form-control')) }}
+			{{ Form::file('featured_image', array('class'=>'form-control', 'type'=>"file", 'id'=>"imgInp featured_image")) }}
 	</div>
 
 </div>

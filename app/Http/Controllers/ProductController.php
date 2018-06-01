@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
-
+use Image;
+use App\Products;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers;
+use Session;
 
 class ProductController extends Controller
 {
@@ -28,12 +32,16 @@ class ProductController extends Controller
         $products = DB::table('products')
         ->where('name', 'LIKE', '%'.$search.'%')
         ->paginate(9);
+        
+        $currencies = DB::table('currencies')
+            ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
+            ->get();
 
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
 
-        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products']));
+        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products','currencies']));
     }
 
     /**
@@ -59,13 +67,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //Insertion
-        DB::table('products')->insert([
-            'name' => $request->title, 
-            'description' => $request->description,
-            'brand_id' => $request->brand,
-            'category_id' => $request->category
-        ]);
 
+            $products = new Products;
+        
+            $products->name = $request->title;
+            $products->description = $request->description; 
+            $products->brand_id = $request->brand;
+            $products->category_id = $request->category;
+        
+          if ($request->hasFile('featured_image')){
+            
+            $image = $request->file('featured_image');
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('image/products/'.$imagename);
+            Image::make($image)->save($location);
+            
+            $products->photo = $imagename ;
+            }
+        
+        $products->save();
         return redirect()->route('products.index');
     }
 
@@ -94,10 +114,16 @@ class ProductController extends Controller
         $currencies = DB::table('currencies')
             ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
             ->get();
+        
+        $comments = DB::table('comments')
+            ->join('users','comments.author_id','=','users.id')
+            ->selectRaw('comments.description ,users.name as na')
+            ->where('comments.product_id',$id)
+            ->get();
 
         $product = $product[0];
 
-        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies']));    
+        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies','comments']));    
     }
 
     /**
@@ -151,6 +177,13 @@ class ProductController extends Controller
     
         public function categories($category)
     {
+            
+        $supermarket_info = DB::table('supermarket_products')
+            ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+            ->get();
+            
+            
         $products = DB::table('products')
             ->join('categories', 'products.category_id', '=', 'categories.id')
             ->select('categories.name','products.id','products.name','products.description','products.grade','products.photo','products.brand_id','products.category_id')
@@ -160,9 +193,18 @@ class ProductController extends Controller
         $categories = DB::table('categories')
             ->select('categories.name')
             ->get();
+            
+        $currencies = DB::table('currencies')
+            ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
+            ->get();
         
              
-        return view('layouts.products.category',compact(['categories', 'products']));
+        /*$search = $request->input('q');
+        $products = DB::table('products')
+        ->where('name', 'LIKE', '%'.$search.'%')
+        ->paginate(9);    */
+            
+        return view('layouts.products.category',compact(['categories', 'products','supermarket_info','currencies']));
     }
 
 }
