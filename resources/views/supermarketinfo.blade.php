@@ -15,8 +15,6 @@
                     </tr>
                   </thead>
 
-
-
                 <tbody>
                     <tr>
                       <td><img src="{{asset('image/supermarkets/rema1000.jpg')}}" alt="rema1000"></td>
