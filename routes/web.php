@@ -14,6 +14,10 @@
 Route::get('/products/categories/{category}','ProductController@categories')->name('products.categories');
 Route::resource('products', 'ProductController');
 
+Route::post('comment.recipe_comment','CommentController@recipe_comment')->name('recipe.comment');
+Route::post('comment.product_comment','CommentController@product_comment')->name('product.comment');
+Route::resource('comment', 'CommentController');
+
 Route::get('/', function () {
      return view('Layouts.app');
 });
@@ -38,24 +42,15 @@ Route::get('/dashboard', function () {
 })->name('dashboard.index');
 
 
-
 Route::get('/dashboard/parameters', 'UserController@show')->name('user.parameters');
 Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
 Route::get('/dashboard/favorite_products', "FavoriteProductController@show")->name('user.favorite_products');
 Route::get('/dashboard/favorite_recipes', "FavoriteRecipeController@show")->name('user.favorite_recipes');
 Route::get('/dashboard/favorite_recipes/destroy/{id}', "FavoriteRecipeController@destroy")->name('user.favorite_recipes.destroy');
 Route::get('/dashboard/favorite_products/destroy/{id}', "FavoriteProductController@destroy")->name('user.favorite_products.destroy');
-Route::get('/dashboard/my_recipes', function () {
-    return view('layouts.dashboard.dashboard_item.my_recipes');
-})->name('dashboard.my_recipes');
+Route::get('/dashboard/my_recipes', 'RecipeController@myrecipe')->name('dashboard.my_recipes');
 
-Route::get('/dashboard/manage_products', function () {
-    return view('layouts.dashboard.dashboard_item.admin_manage_products');
-})->name('admin.manage_products');
 
-Route::get('/dashboard/manage_recipes', function () {
-    return view('layouts.dashboard.dashboard_item.admin_manage_recipes');
-})->name('admin.manage_recipes');
 
 
 Route::get('/dashboard/manage_supermarkets', 'SupermarketController@index')->name('admin.manage_supermarkets.index');
@@ -64,9 +59,8 @@ Route::get('/dashboard/manage_supermarkets/destroy/{id}', 'SupermarketController
 Route::get('/dashboard/manage_supermarkets/create', 'SupermarketController@create')->name('admin.manage_supermarkets.create');
 
 
-Route::get('/dashboard/manage_users', function () {
-    return view('layouts.dashboard.dashboard_item.admin_manage_users');
-})->name('admin.manage_users');
+Route::get('/dashboard/manage_users', 'UserController@index')->name('admin.manage_users');
+Route::get('/dashboard/manage_users/delete/{id}', 'UserController@destroy')->name('admin.manage_users.delete');
 
 
 
@@ -78,11 +72,12 @@ Route::get('/feedback/create', "FeedbackController@create")->name('feedback.crea
 Route::post('/feedback/store', "FeedbackController@store")->name('feedback.store');
 Route::get('/feedback/destroy/{id}', "FeedbackController@destroy")->name('feedback.destroy');
 
+Route::post('/product/{id}/supermarket_price/store', "SupermarketProductController@store")->name('supermarketProduct.store');
+Route::get('/product/{prod_id}/supermarket_price/destroy/{sup_prod_id}', "SupermarketProductController@destroy")->name('supermarketProduct.destroy');
 
 
 Route::post('/brand/store', 'BrandController@store')->name('brand.store');
 Route::post('/category/store', 'CategoryController@store')->name('category.store');
-
 
 
 Auth::routes();

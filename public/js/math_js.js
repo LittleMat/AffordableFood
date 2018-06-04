@@ -66,3 +66,15 @@ $( '.img-account' ).on('click', function(){
 
 
 /*  */
+
+
+
+function show_hide_add_supermarket_product(){
+	
+	if($("#add_supermarket").css('visibility') === 'hidden'){
+		$("#add_supermarket").css('visibility', 'visible');
+	}
+	else{
+		$("#add_supermarket").css("visibility", "hidden");
+	}
+}

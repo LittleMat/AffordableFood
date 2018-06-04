@@ -185,4 +185,16 @@ class RecipeController extends Controller
         Session::flash('success','The post was deleted :)');
         return redirect()->route('recipes.index');        
     }
+
+    public function myrecipe()
+    {  
+
+        if(Auth::check()){
+            $id = Auth::id();
+
+            $recipes = DB::table('recipes')->where('author_id', $id)->get();
+        }
+
+        return view('layouts.dashboard.dashboard_item.my_recipes', compact('recipes'));        
+    }
 }

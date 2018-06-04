@@ -5,13 +5,13 @@
 	<br>
 	    <ul class="nav flex-column">  Manage: <br>
 	  <li class="nav-item">
-	    <a class="nav-link" href="{{route('admin.manage_products')}}">
+	    <a class="nav-link" href="{{route('products.index')}}">
 	      <span data-feather="file"></span>
 	      	Products
 	    </a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="{{route('admin.manage_recipes')}}">
+	    <a class="nav-link" href="{{route('recipes.index')}}">
 	      <span data-feather="file"></span>
 	        Recipes
 	    </a>

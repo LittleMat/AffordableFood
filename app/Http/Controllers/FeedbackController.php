@@ -13,6 +13,7 @@ class FeedbackController extends Controller
     	$feedbacks = DB::table('feedbacks')
     					->join('users', 'users.id', '=', 'feedbacks.author_id')
     					->selectRaw('users.email as author, feedbacks.title as title, feedbacks.text as text, feedbacks.id as id')
+    					->orderBy('feedbacks.id', 'desc')
     					->get();
 
 	 	return view('layouts.feedback.feedback_index', compact('feedbacks'));

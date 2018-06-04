@@ -65,4 +65,33 @@ class UserController extends Controller
 		}
        
     } 
+
+    public function destroy($id){
+    	dd($id);
+    	DB::table('favorite_products')->where('user_id', $id)->delete();
+    	DB::table('favorite_recipes')->where('user_id', $id)->delete();
+    	DB::table('feedback')->where('author_id', $id)->delete();
+    	DB::table('users')->where('id', $id)->delete();
+    	
+    	return view(route('admin.manage_users'));
+    }
+
+    public function index(){
+    	
+				$users = DB::table('users')
+    			 ->join('currencies', 'currencies.id', '=', 'users.currency' )
+    			 ->join('languages', 'languages.id', '=', 'users.language' )
+    			 ->join('member_statuses', 'member_statuses.id', '=', 'users.member_status_id' )
+
+
+    			 ->selectRaw('users.id as id, users.name as name, users.first_name as first_name, users.last_name as last_name, users.email as email, users.adress as adress, currencies.name as currency, languages.name as language, member_statuses.name as status, users.created_at as created_at')
+    			 ->get();
+
+    	
+
+
+    	return view ('layouts.dashboard.dashboard_item.admin_manage_users', compact(['users']));    
+    }
 }
+
+		

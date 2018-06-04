@@ -72,7 +72,18 @@
                 </div>  
             </div>
     @endif
+    <br>
     
+    {!! Form::open(array('route' =>['recipe.comment'], 'method' => 'POST' )) !!} 
+
+            {{ Form::label('description', 'Your comment :') }}
+            {{ Form::text('description','Write your comment here', array('class'=>'form-control add-margin')) }}
+            
+            {{ Form::text('id', $recipes->id , array('class'=>'d-none')) }}
+
+            {{ Form::submit('post', array('class' =>'btn add-margin') ) }}
+                     
+    {!! Form::close() !!}
     
 
 <footer> @include('inc/footer') </footer>   

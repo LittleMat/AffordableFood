@@ -14,56 +14,61 @@
           	<div class="container">
 		    <h1>List of products</h1>
 
-		    {{Form::open(array('url'=>'/'))}}
-		    	{{Form::text('keyword', null, array('placeholder'=>'search by keyword'))}}
-		    	{{Form::submit('search')}}
-		    {{Form::close()}}
+			<form class="form-inline" action="{{action('ProductController@index')}}", method="GET" role="search">
+				<div class="form-group mx-sm-3 mb-2">
+				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="productname">
+				    <button type="submit" class="btn btn-success">Search Product</button>
+				    <a class="btn btn-success addproduct"href="{{route('products.create')}}">Add a product</a>
+				</div>
+			</form>
 
 			<hr>
+			
+	<div class="wrapper">
+      	<div class="pricing-table">
 
-			<table class="table table-striped table-bordered">
-				
-				<thead>
-					<tr>
-						<th></th>
-						<th>Product Name</th>
-						<th>Product Description</th>
-						<th>Supermarket</th>
-					</tr>
-				</thead>
-
-				<tbody>
-
-					@foreach($products as $product)
+      	@foreach($products as $product)
 					
-					<tr>
-						<td>
-							
-							<img src="{{ ($product->photo) }}" class="productimages" />
-						</td>
-						<td><a href="{{ route('products.show', $product->id)}}" class="product">
-							{{$product->name}}</a>
-						</td>
-						<td>{{$product->description}}</td>
-						<td></td>
-					@endforeach
-
-			<table>
+		@php
+			$prices=array();
+		@endphp
+        	<div class="pricing-box">
+		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a></h2>
+		        <span class="price">
+		        			@foreach($supermarket_info as $supermarket)
+								@if($supermarket->product_id===$product->id)
+									@php
+										$prices[] = $supermarket->price;
+									@endphp
+								@endif
+							@endforeach
+							@php
+								echo min($prices);
+								$p= min($prices);
+							@endphp
+		        </span>
+		        <img src="{{ ($product->photo) }}" class="productimages" />
+		        <span class="pricing-table-divider"></span>
+		        <p class="description">{{$product->description}}</p>
+		        <span class="pricing-table-divider"></span>
+		        <p class="description">
+		        			@foreach($supermarket_info as $supermarket)
+								@if($supermarket->product_id===$product->id AND $supermarket->price===$p)
+									{{$supermarket->Name}} 
+									<br>
+								@endif
+							@endforeach</p>
+			</div>
+		@endforeach
+	    </div>
+	</div>
 
 			{{ $products->links() }}
-			
-			<br>
 
-			</div>
-			<br>
-			<br>
-			<a href="{{route('products.create')}}">Add a product</a>
-			</div>
-		</div>
-			<!-- maincontent -->
-          </div>
-        </main>
-      </div>
-    </div>
+	</div>
+
+	</div>
+
+    </main>
 
 @stop
