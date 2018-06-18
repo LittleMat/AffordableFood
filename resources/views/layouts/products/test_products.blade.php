@@ -1,19 +1,11 @@
 @extends('layouts.app')
-
 @section('content')
-
-
         @include('layouts/products/_productnav')  
-
-
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
           	<!-- maincontent stuff here -->
-
-
           	<div class="container">
 		    <h1>List of products</h1>
-
 			<form class="form-inline" action="{{action('ProductController@index')}}", method="GET" role="search">
 				<div class="form-group mx-sm-3 mb-2">
 				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="productname">
@@ -21,12 +13,9 @@
 				    <a class="btn btn-success addproduct"href="{{route('products.create')}}">Add a product</a>
 				</div>
 			</form>
-
-			<hr>
-			
+			<hr>		
 	<div class="wrapper">
       	<div class="pricing-table">
-
       	@foreach($products as $product)			
         	<div class="pricing-box">
 		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a></h2>
@@ -62,8 +51,7 @@
                                           @endif
                                     @endforeach
                                 @endif
-                            @endif
-                        
+                            @endif          
 		        </span>
 		        <img src="{{ asset('image/products/'.$product->photo) }}" class="productimages" />
 		        <span class="pricing-table-divider"></span>
@@ -80,13 +68,8 @@
 		@endforeach
 	    </div>
 	</div>
-
 			{{ $products->links() }}
-
 	</div>
-
 	</div>
-
     </main>
-
 @stop

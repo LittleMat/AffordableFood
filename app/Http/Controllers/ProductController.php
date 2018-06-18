@@ -14,18 +14,13 @@ use Session;
 
 class ProductController extends Controller
 {
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {   
 
         $supermarket_info = DB::table('supermarket_products')
             ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
-            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity',
+                     'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
             ->get();
 
         $search = $request->input('q');
