@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container">
      
     @include('inc/navbar')
     
@@ -85,4 +86,5 @@
         <p>{{  $com->description }}</p>
         <br>
     @endforeach
+    </div>
 @endsection
