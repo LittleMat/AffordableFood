@@ -48,11 +48,10 @@
 		    </div>
 		</div>
 	</div>
-</div> <br> 
 	
-<div class="row">
-	<div class="col-lg-12">
-			{{ Form::file('image', array('class'=>'form-control')) }}
+	
+	<div class="col-lg-6">
+			{{ Form::file('featured_image', array('class'=>'form-control', 'type'=>"file", 'id'=>"imgInp featured_image")) }}
 	</div>
 </div>
 	

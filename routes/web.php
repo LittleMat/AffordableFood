@@ -19,7 +19,7 @@ Route::post('comment.product_comment','CommentController@product_comment')->name
 Route::resource('comment', 'CommentController');
 
 Route::get('/', function () {
-     return view('Layouts.app');
+     return view('home');
 });
 
 // Route::get('/products', 'ProductController@categorienames')->name('products._productnav');

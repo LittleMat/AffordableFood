@@ -20,8 +20,7 @@
                 <div class="col-sm-9">
                     <h1> {{ $recipes->title }} </h1>
                     
-                       @if( isset($recipes['image']) )
-                        
+                       @if( isset($recipes['image']) )                    
                             <div class="container">
                                <img src="{{ asset('image/'.$recipes->image) }}" alt="Image" class="img-fluid"  style=" max-height:400px; width: auto;" >  
                             </div> 
@@ -85,7 +84,13 @@
                      
     {!! Form::close() !!}
     
-
+        <br>          
+    @foreach($comments as $com)
+        <h4>{{ $com->na }}</h4>
+        <p>{{  $com->description }}</p>
+        <br>
+    @endforeach
+    
 <footer> @include('inc/footer') </footer>   
 </body>
 </html>
