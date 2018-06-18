@@ -149,7 +149,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
+        $product = DB::table('products')->where('id', $id)->limit(1);
         
         $product->update([
             'name' => $request->title, 
