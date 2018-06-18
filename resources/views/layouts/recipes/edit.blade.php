@@ -1,11 +1,6 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-   
-<head>
-      @include('inc/head')
+@extends('layouts.app')
 
-</head>
-<body>
+@section('content')
      
     @include('inc/navbar')
     
@@ -64,8 +59,4 @@
             
     @endif
     
-    
-
-<footer> @include('inc/footer') </footer>   
-</body>
-</html>
+@endsection
