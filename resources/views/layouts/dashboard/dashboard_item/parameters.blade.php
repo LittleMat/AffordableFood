@@ -7,8 +7,9 @@
 	<div class="col-lg-10 bg-light">
 		<div class="row">
 			<div class="col-lg-9">
-
-                    {!! Form::model(['route' => ['user.update'], 'method' => 'PUT' , 'files'=>true ]) !!}
+					<form action="{{url(route('user.update'))}}" method="POST">
+					{{method_field('PATCH')}}
+					{{ csrf_field() }}
 
 					<table class="table">
 					  <tbody>
@@ -66,11 +67,43 @@
 						</tr>
 						<tr>
 						  <td>Language : </td>
-						  <td>{{$user->language}}</td>
+						  <td>
+						  	<div class="form-row">
+						  		<div class="form-group col-md-6">
+									  <select class="form-control" id="select_language" name="language">
+									      @foreach($languages as $language)
+									      	<option value="{!!$language->id!!}" 
+										      		{{isset($user->language) ? (($user->language == $language->id) ? 'selected' : '') : ''}}>
+										      		{{$language->name}}
+									      	</option>
+									      @endforeach
+									   </select>
+									</div>
+								   <div class="form-group col-md-6">
+								   		<button type="submit" class="btn btn-primary validate_language">Validate</button> 
+								   </div>
+							   </div>
+						  </td>
 						</tr>
 						<tr>
 						  <td>Currency : </td>
-						  <td>{{$user->currency}}</td>
+						  <td>
+						  	<div class="form-row">
+						  		<div class="form-group col-md-6">
+								  <select class="form-control" id="select_currency" name="currency">
+								      @foreach($currencies as $currency)
+								      	<option value="{!!$currency->id!!}" 
+									      		{{isset($user->currency) ? (($user->currency == $currency->id) ? 'selected' : '') : ''}}>
+									      		{{$currency->name}}
+								      	</option>
+								      @endforeach
+								   </select>
+								</div>
+								<div class="form-group col-md-6">
+								   <button type="submit" class="btn btn-primary validate_currency">Validate</button> 
+								</div>
+							</div>
+						  </td>
 						</tr>
 					  </tbody>
 					</table>
@@ -81,8 +114,6 @@
 				<img src="{{asset($user->photo)}}" class="img-fluid img-account" alt="Responsive image">	
 				<br>
 				<p>Status : {{$status->name}}</p>	
-				<input type="file" name="file_photo" id="file_photo" style="visibility:hidden";/>
-				<button type="submit" class="btn btn-primary validate_image">Validate</button> 
 			</div>
 		</div>
 		{!! Form::close() !!}       
