@@ -5,7 +5,10 @@
 		<div class="row">
 			<div class="col-lg-6">
 
-				<h1>{{$product->prod_name}}</h1> <br>
+				<h1>
+					{{$product->prod_name}} 
+					
+				</h1> <br>
 				
                 <div class="container">
                     <img src="{{ asset('image/products/'.$product->photo) }}" alt="Image" class="img-fluid"  style=" max-height:400px; width: auto;">

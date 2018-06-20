@@ -27,8 +27,10 @@ class UserController extends Controller
 
 	        $status = DB::table('member_statuses')->where('id', $user->member_status_id)->first();
 
+        	$currencies = DB::table('currencies')->orderBy('name')->get();
+        	$languages = DB::table('languages')->orderBy('name')->get();
 
-	        return view ('layouts.dashboard.dashboard_item.parameters', compact(['user', 'stat', 'status']));    
+	        return view ('layouts.dashboard.dashboard_item.parameters', compact(['user', 'stat', 'status', 'currencies', 'languages']));    
     	}
     }
 
@@ -37,7 +39,6 @@ class UserController extends Controller
     	if(Auth::check()){
 			$id = Auth::id();
 			
-			dd($request->hasFile('file_photo'));
 
 
 			if ($request->hasFile('file_photo')){
@@ -48,7 +49,6 @@ class UserController extends Controller
 	            Image::make($image)->save($location);
 	        }
 
-	        dd($location);
 
 
 			DB::table('users')
@@ -58,7 +58,9 @@ class UserController extends Controller
 		            'last_name' => $request->last_name,
 		            'email' => $request->email,
 		            'adress' => $request->adress,
-		            'photo' => $location
+		            'currency' => $request->currency,
+		            'language' => $request->language
+
 	        	]);
 
 	        return redirect(route('user.parameters'));

@@ -16,6 +16,8 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {   
+        $favorite_products = null;
+        $connected=false;
 
         $supermarket_info = DB::table('supermarket_products')
             ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
@@ -38,7 +40,13 @@ class ProductController extends Controller
             ->select('categories.name')
             ->get();
 
-        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products','currencies']));
+        if(Auth::check()){
+            $connected = true;
+            $id = Auth::id();
+            $favorite_products = DB::table('favorite_products')->where('user_id', $id)->select('product_id')->get();
+        }
+
+        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products','currencies','favorite_products','connected']));
     }
 
     /**

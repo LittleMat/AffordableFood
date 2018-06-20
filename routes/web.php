@@ -43,7 +43,6 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/dashboard/parameters', 'UserController@show')->name('user.parameters');
-Route::put('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
 Route::get('/dashboard/favorite_products', "FavoriteProductController@show")->name('user.favorite_products');
 Route::get('/dashboard/favorite_recipes', "FavoriteRecipeController@show")->name('user.favorite_recipes');
 Route::get('/dashboard/favorite_recipes/destroy/{id}', "FavoriteRecipeController@destroy")->name('user.favorite_recipes.destroy');
@@ -65,6 +64,7 @@ Route::get('/dashboard/manage_users/delete/{id}', 'UserController@destroy')->nam
 
 
 Route::get('/recipes/{recipe}/make_fav', "FavoriteRecipeController@make_fav")->name('recipes.make_fav');
+Route::get('/products/{product}/make_fav', "FavoriteProductController@make_fav")->name('products.make_fav');
 
 
 Route::get('/feedback', "FeedbackController@index")->name('feedback.index');
@@ -87,4 +87,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('recipes','RecipeController');
 Route::get('/recipes/create', ['middleware' => ['auth'], 'uses'=>'RecipeController@create'])->name('recipes.create');
 
+Route::patch('/dashboard/parameters/edit', 'UserController@update')->name('user.update');
 
