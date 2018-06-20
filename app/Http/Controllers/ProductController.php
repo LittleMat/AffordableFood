@@ -23,7 +23,7 @@ class ProductController extends Controller
             ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
 
             ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity',
-                     'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+                     'supermarket_products.measure_type', 'supermarket_products.product_id')  
             ->get();
 
         $search = $request->input('q');

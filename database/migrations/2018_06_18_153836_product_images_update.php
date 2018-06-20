@@ -13,11 +13,11 @@ class ProductImagesUpdate extends Migration
      */
     public function up()
     {
-        DB::statement(" UPDATE `products` SET `photo` = 'image1.png' where `id` =1 ");
-        DB::statement(" UPDATE `products` SET `photo` = 'image2.png' where `id` =2 ");
-        DB::statement(" UPDATE `products` SET `photo` = 'image3.png' where `id` =3 ");
-        DB::statement(" UPDATE `products` SET `photo` = 'image4.png' where `id` =4 ");
-        DB::statement(" UPDATE `products` SET `photo` = 'image5.png' where `id` =5 ");
+        DB::statement(" UPDATE `products` SET `photo` = 'image1.jpg' where `id` =1 ");
+        DB::statement(" UPDATE `products` SET `photo` = 'image2.jpg' where `id` =2 ");
+        DB::statement(" UPDATE `products` SET `photo` = 'image3.jpg' where `id` =3 ");
+        DB::statement(" UPDATE `products` SET `photo` = 'image4.jpg' where `id` =4 ");
+        DB::statement(" UPDATE `products` SET `photo` = 'image5.jpg' where `id` =5 ");
         DB::statement(" UPDATE `products` SET `photo` = 'default.png' where `id` =6 ");
         DB::statement(" UPDATE `products` SET `photo` = 'default.png' where `id` =7 ");
         DB::statement(" UPDATE `products` SET `photo` = 'default.png' where `id` =8 ");
