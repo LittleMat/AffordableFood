@@ -18,9 +18,28 @@ Route::post('comment.recipe_comment','CommentController@recipe_comment')->name('
 Route::post('comment.product_comment','CommentController@product_comment')->name('product.comment');
 Route::resource('comment', 'CommentController');
 
-Route::get('/', function () {
-     return view('home');
+Route::get('/nl', function () {
+	Lang::setLocale('nl');
+    return view('home');
 });
+
+Route::get('/home/nl', function () {
+	Lang::setLocale('nl');
+    return view('home');
+});
+
+Route::get('/', function () {
+	Lang::setLocale('en');
+    return view('home');
+});
+
+Route::get('/home', function () {
+	Lang::setLocale('en');
+    return view('home');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 // Route::get('/products', 'ProductController@categorienames')->name('products._productnav');
 
@@ -81,8 +100,6 @@ Route::post('/category/store', 'CategoryController@store')->name('category.store
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('recipes','RecipeController');
 Route::get('/recipes/create', ['middleware' => ['auth'], 'uses'=>'RecipeController@create'])->name('recipes.create');

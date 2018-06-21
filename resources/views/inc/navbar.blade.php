@@ -16,29 +16,43 @@
           <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav">       
                  
-                  <!-- <li class="nav-item active d-md-none Filer">
-                        <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
-                  </li> -->
-                  <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">{{__('Products')}} <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                        <a class="nav-link" href="{{ route('recipes.index') }}">{{__('Recipes')}}<span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about') }}">{{__('About')}} <span class="sr-only">(current)</span></a>
-                  </li>
+                  <li class="nav-item">  
+                    <a href="/home">
+                      <img src="image/UKflag.png" class="Flag">
+                    </a>
+                  </li> 
 
                   <li class="nav-item">  
-                  </li>   
+                    <a class="nav-link" href=""></a>
+                  </li> 
+
+                  <li class="nav-item">  
+                    <a href="/home/nl">
+                      <img src="image/NLflag.png" class="Flag">
+                    </a>
+                  </li> 
+
+                  <li class="nav-item">  
+                    <a class="nav-link" href=""></a>
+                  </li> 
+
+                  <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products.index') }}">{{ Lang::get('messages.Products')}} <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="{{ route('recipes.index') }}">{{ Lang::get('messages.Recipes')}}<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" href="{{ route('about') }}">{{ Lang::get('messages.About')}} <span class="sr-only">(current)</span></a>
+                  </li>  
     
             </ul>
             <ul class="navbar-nav ml-md-auto mr-5 ml-3">
                        	<div class="d-none d-sm-block d-md-none Filer "> </div> 
                 
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ Lang::get('messages.Login')}}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ Lang::get('messages.Register')}}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -49,7 +63,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ Lang::get('messages.Logout')}}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('user.parameters') }}">
                                         Dashboard

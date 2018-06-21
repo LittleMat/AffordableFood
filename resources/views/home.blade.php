@@ -12,7 +12,7 @@
       <div class="container">
       	<div class="centertext">
         <h1>Affordable Food</h1>
-        <p class="lead">Find the cheapest food in Horsens</p>
+        <p class="lead">{{ Lang::get('messages.FindCheap')}}</p>
     	</div>
       </div>
     </section>
