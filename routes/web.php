@@ -21,12 +21,12 @@ Route::resource('comment', 'CommentController');
 Route::get('/nl', function () {
 	Lang::setLocale('nl');
     return view('home');
-});
+})->name('home.nl');
 
 Route::get('/home/nl', function () {
 	Lang::setLocale('nl');
     return view('home');
-});
+})->name('home.nl');
 
 Route::get('/', function () {
 	Lang::setLocale('en');
