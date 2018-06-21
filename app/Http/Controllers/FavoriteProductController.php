@@ -15,14 +15,25 @@ class FavoriteProductController extends Controller
 			$id = Auth::id();
 
 		    $favorite_products = DB::table('favorite_products')  
-                ->selectRaw('products.id as id, products.name as name, products.photo as photo')            
+                ->selectRaw('products.id as id, products.name as name, products.photo as photo, products.description as description')            
             	->join('products', 'favorite_products.product_id', '=', 'products.id')
             	->where('favorite_products.user_id', $id)
 		        ->get()
 		    ;
 
+            $supermarket_info = DB::table('supermarket_products')
+                ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
 
-	       return view('layouts.dashboard.dashboard_item.favorite_products', compact(['favorite_products']));
+                ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity',
+                         'supermarket_products.measure_type', 'supermarket_products.product_id')  
+                ->get();
+
+            $currencies = DB::table('currencies')
+                ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
+                ->get();
+
+
+	       return view('layouts.dashboard.dashboard_item.favorite_products', compact(['favorite_products', 'supermarket_info', 'currencies']));
 	   }
     }
 
