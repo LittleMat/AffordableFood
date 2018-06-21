@@ -8,6 +8,7 @@
 		'Login' => 'Login',
 		'Logout' => 'Logout',
 		'FindCheap' => 'Find the cheapest products in Horsens',
+		'Register' => 'Register'
 	];
 
 ?>

@@ -17,8 +17,8 @@
             <ul class="navbar-nav">       
                  
                   <li class="nav-item">  
-                    <a href="/home">
-                      <img src="image/UKflag.png" class="Flag">
+                    <a href="{{ route('home') }}">
+                      <img src="{{asset('image/UKFlag.png')}}" class="Flag">
                     </a>
                   </li> 
 
@@ -27,8 +27,8 @@
                   </li> 
 
                   <li class="nav-item">  
-                    <a href="/home/nl">
-                      <img src="image/NLflag.png" class="Flag">
+                    <a href="{{ route('home.nl') }}">
+                      <img src="{{asset('image/NLFlag.png')}}" class="Flag">
                     </a>
                   </li> 
 
