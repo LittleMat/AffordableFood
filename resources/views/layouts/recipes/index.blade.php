@@ -30,7 +30,7 @@
                 </span>
                         <!--  {{ $recipe->id }} -->
                         @if( isset($recipe['image']) )
-                            <img src="{{ asset('image/'.$recipe->image) }}" alt="Image" class="img-fluid"  style=" max-height:150px; width: auto; " >
+                            <img src="{{ asset('image/'.$recipe->image) }}" alt="Image" class="img-fluid"  style=" max-height:250px; width: auto; " >
                         @else
                             <img src="{{ asset('image/No_Image_Available.png') }}" alt="No image" class="img-fluid"  style=" max-height:150px; width: auto; " >              
                         @endif 

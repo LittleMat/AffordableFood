@@ -8,7 +8,7 @@
 			@foreach($favorite_products as $favorite_product)
 					<div class="col-lg-3 end_row">
 						<div class="row ">
-							<img src="{{ asset('image/products/'.$favorite_product->photo) }}" class="img-fluid" />
+							<img src="{{ asset('image/products/'.$favorite_product->photo) }}" class="img-fluid" style=" max-height:350px; width: auto; "/>
 						</div>
 						<div class="row">
 							    <a href="{{ route('products.show', $favorite_product->id)}}" class="col-lg-12 btn btn-light">
