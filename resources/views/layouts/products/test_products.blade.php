@@ -8,9 +8,14 @@
 		    <h1>List of products</h1>
 			<form class="form-inline" action="{{action('ProductController@index')}}", method="GET" role="search">
 				<div class="form-group mx-sm-3 mb-2">
-				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="productname">
+				    <input type="text" class="form-control" id="searchbar" name="q" placeholder="Product Name...">
 				    <button type="submit" class="btn btn-success">Search Product</button>
-				    <a class="btn btn-success addproduct"href="{{route('products.create')}}">Add a product</a>
+				    
+					@if(Auth::check() && Auth::user()->isAnAdmin())
+						<a class="btn btn-success addproduct"href="{{route('products.create')}}">Add a product</a>
+					@endif
+
+
 				</div>
 			</form>
 			<hr>		
@@ -54,7 +59,7 @@
                                @else
                                     @foreach($currencies as $curr)
                                           @if( Auth::user()->currency === $curr->id)
-                                                {{ round($p*$curr->rate,2) }} {{ $curr->symbol }}
+                                                {{ $p*$curr->rate }} {{ $curr->symbol }}
                                           @endif
                                     @endforeach
                                 @endif
