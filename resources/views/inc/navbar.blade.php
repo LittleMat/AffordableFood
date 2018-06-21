@@ -4,7 +4,7 @@
     
         <div class="text-center container-fluid logo"> 
             <a  href="{{ route('home') }}" class="navbar-brand">
-                <img src="{{asset('image/logo.png')}}"  alt="Logo" >               
+                <img src="{{asset('image/logo.png')}}" class="logoimg" alt="Logo" >               
             </a>
 
         </div>   
