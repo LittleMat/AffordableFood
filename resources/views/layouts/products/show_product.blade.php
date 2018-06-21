@@ -66,7 +66,7 @@
 				      <th scope="row">{{$info->Name}}</th>
 				      <td>
                         @if( is_null(Auth::user()) )  
-                            {{ round($info->price*$curr->rate,2) }} kr
+                            {{ round($info->price) }} kr
                         @else
                             @foreach($currencies as $curr)
                                   @if( Auth::user()->currency === $curr->id)
