@@ -7,11 +7,8 @@
 				@foreach($favorite_recipes as $favorite_recipe)
 					<div class="col-lg-3 end_row">
 						<div class="row ">
-							   	@if( isset($recipe['image']) )
-								    <img src="{{ asset('image/'.$recipe->image) }}" alt="Image" class="img-fluid vertical-center">
-							    @else
+								    <img src="{{ asset('image/'.$favorite_recipe->image) }}" alt="Image" class="img-fluid vertical-center">
 							        <img src="{{ asset('image/No_Image_Available.png') }}" alt="No image" class="img-fluid vertical-center" >              
-							    @endif  
 						</div>
 						<div class="row">
 							    <a href="{{ route('recipes.show', $favorite_recipe->id)}}" class="col-lg-12 btn btn-light">

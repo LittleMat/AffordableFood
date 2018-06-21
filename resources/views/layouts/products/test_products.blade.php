@@ -18,7 +18,14 @@
       	<div class="pricing-table">
       	@foreach($products as $product)			
         	<div class="pricing-box">
-		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a></h2>
+		        <h2><a href="{{ route('products.show', $product->id)}}" class="product">{{$product->name}}</a> 
+		        	@if($connected)
+					    @if($favorite_products->contains('product_id', $product->id))
+					        <a href="{{route('products.make_fav', $product->id)}}" class='btn btn-default btn-sm'> <i class="fas fa-star"></i> </a>
+					    @else
+					        <a href="{{route('products.make_fav', $product->id)}}" class='btn btn-default btn-sm'> <i class="far fa-star"></i> </a>
+					    @endif
+					@endif</h2>
 		        <span class="price">
                             @php
 			                    $prices=array();
@@ -47,7 +54,7 @@
                                @else
                                     @foreach($currencies as $curr)
                                           @if( Auth::user()->currency === $curr->id)
-                                                {{ $p*$curr->rate }} {{ $curr->symbol }}
+                                                {{ round($p*$curr->rate,2) }} {{ $curr->symbol }}
                                           @endif
                                     @endforeach
                                 @endif

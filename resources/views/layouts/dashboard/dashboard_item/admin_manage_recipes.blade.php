@@ -3,7 +3,7 @@
 @section('content_dashboard')
 
 	<div>
-		Manage Recipes
+
 	</div>
 
 @endsection

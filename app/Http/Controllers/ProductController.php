@@ -16,11 +16,14 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {   
+        $favorite_products = null;
+        $connected=false;
 
         $supermarket_info = DB::table('supermarket_products')
             ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
+
             ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity',
-                     'supermarket_products.measure_type', 'supermarket_products.product_id', 'supermarket_products.price')  
+                     'supermarket_products.measure_type', 'supermarket_products.product_id')  
             ->get();
 
         $search = $request->input('q');
@@ -33,10 +36,17 @@ class ProductController extends Controller
             ->get();
 
         $categories = DB::table('categories')
+            ->orderBy('name')
             ->select('categories.name')
             ->get();
 
-        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products','currencies']));
+        if(Auth::check()){
+            $connected = true;
+            $id = Auth::id();
+            $favorite_products = DB::table('favorite_products')->where('user_id', $id)->select('product_id')->get();
+        }
+
+        return view('layouts.products.test_products', compact(['supermarket_info', 'categories', 'products','currencies','favorite_products','connected']));
     }
 
     /**
@@ -46,8 +56,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = DB::table('categories')->get();
-        $brands = DB::table('brands')->get();
+        $categories = DB::table('categories')->orderBy('name')->get();
+        $brands = DB::table('brands')->orderBy('name')->get();
 
 
         return view('layouts.products.store_product', compact(['categories', 'brands']));
@@ -102,10 +112,10 @@ class ProductController extends Controller
 
         $supermarket_info = DB::table('supermarket_products')
             ->join('supermarkets', 'supermarket_products.supermarket_id', '=', 'supermarkets.id')
-            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type')  
-            ->where('supermarket_products.product_id', $id)
+            ->select('supermarkets.Name', 'supermarket_products.price', 'supermarket_products.quantity', 'supermarket_products.measure_type', 'supermarket_products.id')  
+            ->where('supermarket_products.product_id', $id)->orderBy('supermarket_products.price') 
             ->get();
-        
+
         $currencies = DB::table('currencies')
             ->select('currencies.id', 'currencies.name', 'currencies.currency_name','currencies.rate','currencies.symbol')  
             ->get();
@@ -116,9 +126,11 @@ class ProductController extends Controller
             ->where('comments.product_id',$id)
             ->get();
 
-        $product = $product[0];
+        $supermarkets = DB::select('select id, Name from supermarkets where id not in (select supermarket_id from supermarket_products where product_id= :id) ', ['id' => $id]);
 
-        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies','comments']));    
+        $product = $product[0];
+        
+        return view ('layouts.products.show_product', compact(['product', 'supermarket_info','currencies', 'supermarkets', 'comments']));    
     }
 
     /**
@@ -145,7 +157,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = DB::table('products')->where('id', $id)->first();
+        $product = DB::table('products')->where('id', $id)->limit(1);
         
         $product->update([
             'name' => $request->title, 
