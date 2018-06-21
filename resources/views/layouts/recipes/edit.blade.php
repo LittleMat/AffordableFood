@@ -3,7 +3,7 @@
 @section('content')
      
     @include('inc/navbar')
-    
+    <div class="container">
     @if( is_null($recipes) )
             <div class="col-md-6 offset-3">
             <h1 class="alert alert-danger text-center">
@@ -23,8 +23,8 @@
                         <h4> {{ Form::label('description', 'Description :') }} </h4>
                         {{ Form::textarea('description', null, ["class" => 'form-control mb-2']) }} 
                                                  
-                    {{ Form::label('featured_image', 'image :') }}
-                    {{ Form::file('featured_image', array('class'=>'form-control')) }}
+                        {{ Form::label('featured_image', 'image :') }}
+                        {{ Form::file('featured_image', array('class'=>'form-control')) }}
                                                   
                 </div>              
                 
@@ -37,9 +37,9 @@
                         </div>
                         
                         <div class="col-sm-9">
-                                 {{ Form::submit('Save', ['class' => 'btn btn-success btn-block']) }}
-                                 {!! Form::close() !!}       
+                                 {{ Form::submit('Save', array('class' =>'btn btn-success btn-block') ) }}
                         </div>
+                    {!! Form::close() !!}  
                         
                    </div>
                 </div>
@@ -58,5 +58,5 @@
             
             
     @endif
-    
+    </div>
 @endsection
