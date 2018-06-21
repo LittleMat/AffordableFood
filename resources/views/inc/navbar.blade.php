@@ -20,13 +20,13 @@
                         <a class="nav-link" href="about"> <span class="sr-only">(current)</span></a>
                   </li> -->
                   <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.index') }}">{{__('navbar.products')}} <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('products.index') }}">{{__('Products')}} <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="{{ route('recipes.index') }}">{{__('navbar.recipes')}}<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('recipes.index') }}">{{__('Recipes')}}<span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about') }}">{{__('navbar.about')}} <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ route('about') }}">{{__('About')}} <span class="sr-only">(current)</span></a>
                   </li>
 
                   <li class="nav-item">  
@@ -37,8 +37,8 @@
                        	<div class="d-none d-sm-block d-md-none Filer "> </div> 
                 
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('navbar.login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('navbar.register') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
